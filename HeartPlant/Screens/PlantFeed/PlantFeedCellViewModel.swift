@@ -9,5 +9,11 @@
 import UIKit
 
 struct PlantFeedCellViewModel {
-    
+    let nameText: String
+}
+
+extension PlantFeedCellViewModel {
+    init(plant: Plant) {
+        self.nameText = plant.name
+    }
 }

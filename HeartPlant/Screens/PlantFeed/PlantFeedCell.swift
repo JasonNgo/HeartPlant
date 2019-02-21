@@ -12,7 +12,7 @@ class PlantFeedCell: UICollectionViewCell {
     
     // MARK: - Subviews
     
-    private let titleLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Title"
         return label
@@ -32,14 +32,14 @@ class PlantFeedCell: UICollectionViewCell {
     // MARK: - Setup
     
     private func setupSubViews() {
-        contentView.addSubview(titleLabel)
-        titleLabel.fillSuperview()
+        contentView.addSubview(nameLabel)
+        nameLabel.fillSuperview()
     }
     
     // MARK: - Configuration
     
     func configureCell(using viewModel: PlantFeedCellViewModel) {
-        
+        nameLabel.text = viewModel.nameText
     }
     
 }
