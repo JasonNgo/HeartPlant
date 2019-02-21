@@ -9,19 +9,33 @@
 import UIKit
 
 class PlantFeedCoordinator: Coordinator {
-    private let navigationContrller: UINavigationController
+    let navigationController: UINavigationController
     private var plantFeedViewController: PlantFeedViewController?
     
     init(navigationController: UINavigationController) {
-        self.navigationContrller = navigationController
+        self.navigationController = navigationController
+        super.init()
+        
+        setupNavigationControllerStyling()
     }
     
     override func start() {
         let plantFeedDataSource = PlantFeedDataSource()
         let plantFeedViewController = PlantFeedViewController(dataSource: plantFeedDataSource)
+        plantFeedViewController.tabBarItem.title = "My Plants"
+        plantFeedViewController.tabBarItem.image = #imageLiteral(resourceName: "icons8-potted_plant")
         setDeallocallable(with: plantFeedViewController)
-        navigationContrller.pushViewController(plantFeedViewController, animated: false)
+        navigationController.pushViewController(plantFeedViewController, animated: false)
         self.plantFeedViewController = plantFeedViewController
+    }
+    
+    private func setupNavigationControllerStyling() {
+        let titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: ColorManager.shared.primaryColor
+        ]
+        
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.largeTitleTextAttributes = titleTextAttributes
     }
     
 }
