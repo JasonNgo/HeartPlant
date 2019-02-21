@@ -21,8 +21,8 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     
     // MARK: - Styling Constants
     private let cellWidth = UIScreen.main.bounds.width
-    private let cellHeight: CGFloat = 45
-    private let minimumLineSpacingForSection: CGFloat = 1
+    private let cellHeight: CGFloat = 100
+    private let minimumLineSpacingForSection: CGFloat = 0
     
     // MARK: - Model
 
@@ -51,7 +51,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     // MARK: - Setup
     
     private func setupControllerStyling() {
-        title = "My Plants"
+        title = "Plants"
         view.backgroundColor = .white
     }
     

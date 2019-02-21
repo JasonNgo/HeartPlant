@@ -22,7 +22,7 @@ class PlantFeedCoordinator: Coordinator {
     override func start() {
         let plantFeedDataSource = PlantFeedDataSource()
         let plantFeedViewController = PlantFeedViewController(dataSource: plantFeedDataSource)
-        plantFeedViewController.tabBarItem.title = "My Plants"
+        plantFeedViewController.tabBarItem.title = "Plants"
         plantFeedViewController.tabBarItem.image = #imageLiteral(resourceName: "icons8-potted_plant")
         setDeallocallable(with: plantFeedViewController)
         navigationController.pushViewController(plantFeedViewController, animated: false)

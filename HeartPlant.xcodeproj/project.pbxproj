@@ -43,6 +43,7 @@
 		7DBC1F74221EFC450058B11D /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F73221EFC450058B11D /* ProfileCoordinator.swift */; };
 		7DBC1F76221F054C0058B11D /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F75221F054C0058B11D /* ColorManager.swift */; };
 		7DBC1F77221F11730058B11D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D765E47221E0111005BDB30 /* Assets.xcassets */; };
+		7DBC1F79221F2A320058B11D /* PlantFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC1F78221F2A320058B11D /* PlantFeedCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		7DBC1F71221EFBDA0058B11D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7DBC1F73221EFC450058B11D /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		7DBC1F75221F054C0058B11D /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		7DBC1F78221F2A320058B11D /* PlantFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantFeedCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			children = (
 				7D765E7B221E1176005BDB30 /* Plant.swift */,
 				7D765E77221E0E29005BDB30 /* PlantFeedCell.swift */,
+				7DBC1F78221F2A320058B11D /* PlantFeedCell.xib */,
 				7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */,
 				7D765E71221E0A88005BDB30 /* PlantFeedCoordinator.swift */,
 				7D765E6F221E0974005BDB30 /* PlantFeedDataSource.swift */,
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D765E7F221E1382005BDB30 /* plants.json in Resources */,
+				7DBC1F79221F2A320058B11D /* PlantFeedCell.xib in Resources */,
 				7DBC1F77221F11730058B11D /* Assets.xcassets in Resources */,
 				7D765E4B221E0111005BDB30 /* LaunchScreen.storyboard in Resources */,
 			);

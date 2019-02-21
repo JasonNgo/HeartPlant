@@ -24,7 +24,7 @@ class PlantFeedDataSource: NSObject {
 
 extension PlantFeedDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return plants.count
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -32,9 +32,9 @@ extension PlantFeedDataSource: UICollectionViewDataSource {
             fatalError("Unable to dequeue PlantFeedCell")
         }
         
-        let plant = plants[indexPath.item]
-        let viewModel = PlantFeedCellViewModel(plant: plant)
-        cell.configureCell(using: viewModel)
+//        let plant = plants[indexPath.item]
+//        let viewModel = PlantFeedCellViewModel(plant: plant)
+//        cell.configureCell(using: viewModel)
         
         return cell
     }
