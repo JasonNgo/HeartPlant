@@ -24,6 +24,18 @@
 		7D765E7A221E0E85005BDB30 /* PlantFeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */; };
 		7D765E7C221E1176005BDB30 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E7B221E1176005BDB30 /* Plant.swift */; };
 		7D765E7F221E1382005BDB30 /* plants.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D765E7E221E1382005BDB30 /* plants.json */; };
+		7DBC1F57221E46CE0058B11D /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F48221E46CE0058B11D /* ParameterEncoding.swift */; };
+		7DBC1F58221E46CE0058B11D /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F49221E46CE0058B11D /* URLParameterEncoder.swift */; };
+		7DBC1F59221E46CE0058B11D /* EncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F4A221E46CE0058B11D /* EncodingError.swift */; };
+		7DBC1F5A221E46CE0058B11D /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F4B221E46CE0058B11D /* JSONParameterEncoder.swift */; };
+		7DBC1F5B221E46CE0058B11D /* FileAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F4D221E46CE0058B11D /* FileAccessor.swift */; };
+		7DBC1F5C221E46CE0058B11D /* SportsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F4F221E46CE0058B11D /* SportsEndPoint.swift */; };
+		7DBC1F5D221E46CE0058B11D /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F51221E46CE0058B11D /* NetworkRouter.swift */; };
+		7DBC1F5E221E46CE0058B11D /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F52221E46CE0058B11D /* HTTPTask.swift */; };
+		7DBC1F5F221E46CE0058B11D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F53221E46CE0058B11D /* HTTPMethod.swift */; };
+		7DBC1F60221E46CE0058B11D /* RouterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F54221E46CE0058B11D /* RouterError.swift */; };
+		7DBC1F61221E46CE0058B11D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F55221E46CE0058B11D /* Router.swift */; };
+		7DBC1F62221E46CE0058B11D /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F56221E46CE0058B11D /* EndPointType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +70,18 @@
 		7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCellViewModel.swift; sourceTree = "<group>"; };
 		7D765E7B221E1176005BDB30 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		7D765E7E221E1382005BDB30 /* plants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plants.json; sourceTree = "<group>"; };
+		7DBC1F48221E46CE0058B11D /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		7DBC1F49221E46CE0058B11D /* URLParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		7DBC1F4A221E46CE0058B11D /* EncodingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingError.swift; sourceTree = "<group>"; };
+		7DBC1F4B221E46CE0058B11D /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		7DBC1F4D221E46CE0058B11D /* FileAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileAccessor.swift; sourceTree = "<group>"; };
+		7DBC1F4F221E46CE0058B11D /* SportsEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportsEndPoint.swift; sourceTree = "<group>"; };
+		7DBC1F51221E46CE0058B11D /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		7DBC1F52221E46CE0058B11D /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		7DBC1F53221E46CE0058B11D /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		7DBC1F54221E46CE0058B11D /* RouterError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterError.swift; sourceTree = "<group>"; };
+		7DBC1F55221E46CE0058B11D /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7DBC1F56221E46CE0058B11D /* EndPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +126,7 @@
 				7D765E4C221E0111005BDB30 /* Info.plist */,
 				7D765E7D221E1344005BDB30 /* Resources */,
 				7D765E62221E083F005BDB30 /* Utilities */,
+				7DBC1F46221E46CE0058B11D /* Networking */,
 				7D765E75221E0BEE005BDB30 /* App */,
 				7D765E6D221E092E005BDB30 /* Screens */,
 			);
@@ -167,6 +192,57 @@
 				7D765E7E221E1382005BDB30 /* plants.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7DBC1F46221E46CE0058B11D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7DBC1F47221E46CE0058B11D /* Encoding */,
+				7DBC1F4E221E46CE0058B11D /* EndPoint */,
+				7DBC1F4C221E46CE0058B11D /* FileAccessor */,
+				7DBC1F50221E46CE0058B11D /* Router */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7DBC1F47221E46CE0058B11D /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				7DBC1F48221E46CE0058B11D /* ParameterEncoding.swift */,
+				7DBC1F49221E46CE0058B11D /* URLParameterEncoder.swift */,
+				7DBC1F4A221E46CE0058B11D /* EncodingError.swift */,
+				7DBC1F4B221E46CE0058B11D /* JSONParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		7DBC1F4C221E46CE0058B11D /* FileAccessor */ = {
+			isa = PBXGroup;
+			children = (
+				7DBC1F4D221E46CE0058B11D /* FileAccessor.swift */,
+			);
+			path = FileAccessor;
+			sourceTree = "<group>";
+		};
+		7DBC1F4E221E46CE0058B11D /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				7DBC1F4F221E46CE0058B11D /* SportsEndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		7DBC1F50221E46CE0058B11D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				7DBC1F51221E46CE0058B11D /* NetworkRouter.swift */,
+				7DBC1F52221E46CE0058B11D /* HTTPTask.swift */,
+				7DBC1F53221E46CE0058B11D /* HTTPMethod.swift */,
+				7DBC1F54221E46CE0058B11D /* RouterError.swift */,
+				7DBC1F55221E46CE0058B11D /* Router.swift */,
+				7DBC1F56221E46CE0058B11D /* EndPointType.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,19 +346,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DBC1F5E221E46CE0058B11D /* HTTPTask.swift in Sources */,
+				7DBC1F57221E46CE0058B11D /* ParameterEncoding.swift in Sources */,
 				7D765E61221E068F005BDB30 /* PlantFeedViewController.swift in Sources */,
 				7D765E68221E085B005BDB30 /* Safe.swift in Sources */,
 				7D765E7A221E0E85005BDB30 /* PlantFeedCellViewModel.swift in Sources */,
+				7DBC1F5B221E46CE0058B11D /* FileAccessor.swift in Sources */,
 				7D765E70221E0974005BDB30 /* PlantFeedDataSource.swift in Sources */,
 				7D765E6B221E085B005BDB30 /* Coordinator.swift in Sources */,
+				7DBC1F62221E46CE0058B11D /* EndPointType.swift in Sources */,
 				7D765E72221E0A88005BDB30 /* PlantFeedCoordinator.swift in Sources */,
 				7D765E7C221E1176005BDB30 /* Plant.swift in Sources */,
+				7DBC1F58221E46CE0058B11D /* URLParameterEncoder.swift in Sources */,
 				7D765E74221E0BDC005BDB30 /* ApplicationCoordinator.swift in Sources */,
 				7D765E6A221E085B005BDB30 /* UIView+Extensions.swift in Sources */,
 				7D765E6C221E085B005BDB30 /* UIColor+Extensions.swift in Sources */,
+				7DBC1F5F221E46CE0058B11D /* HTTPMethod.swift in Sources */,
 				7D765E69221E085B005BDB30 /* Result.swift in Sources */,
+				7DBC1F61221E46CE0058B11D /* Router.swift in Sources */,
+				7DBC1F5C221E46CE0058B11D /* SportsEndPoint.swift in Sources */,
 				7D765E41221E010F005BDB30 /* AppDelegate.swift in Sources */,
+				7DBC1F5A221E46CE0058B11D /* JSONParameterEncoder.swift in Sources */,
+				7DBC1F60221E46CE0058B11D /* RouterError.swift in Sources */,
+				7DBC1F5D221E46CE0058B11D /* NetworkRouter.swift in Sources */,
 				7D765E78221E0E29005BDB30 /* PlantFeedCell.swift in Sources */,
+				7DBC1F59221E46CE0058B11D /* EncodingError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
