@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlantFeedCell" customModule="HeartPlant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbR-Yl-HUw">
+                    <rect key="frame" x="16" y="15" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="Fzm-0P-kgq"/>
+                        <constraint firstAttribute="width" constant="70" id="J45-fI-1a7"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MAm-TG-kYM">
+                    <rect key="frame" x="102" y="15" width="261" height="70"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Common Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02U-rG-ebf">
+                            <rect key="frame" x="0.0" y="0.0" width="261" height="22"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scientific Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuL-Uo-FMg">
+                            <rect key="frame" x="0.0" y="24" width="261" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Last Watered" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-VH-SJm">
+                            <rect key="frame" x="0.0" y="48" width="261" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.28951823710000002" green="0.81417971850000004" blue="0.75030606990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="tuL-Uo-FMg" secondAttribute="trailing" id="0AH-Yd-up3"/>
+                        <constraint firstItem="02U-rG-ebf" firstAttribute="leading" secondItem="MAm-TG-kYM" secondAttribute="leading" id="NMk-cL-dKF"/>
+                        <constraint firstItem="z5g-VH-SJm" firstAttribute="leading" secondItem="MAm-TG-kYM" secondAttribute="leading" id="O38-ps-OM4"/>
+                        <constraint firstItem="tuL-Uo-FMg" firstAttribute="leading" secondItem="MAm-TG-kYM" secondAttribute="leading" id="a6m-6n-iPL"/>
+                        <constraint firstAttribute="trailing" secondItem="02U-rG-ebf" secondAttribute="trailing" id="hNT-QZ-ePl"/>
+                        <constraint firstAttribute="trailing" secondItem="z5g-VH-SJm" secondAttribute="trailing" id="wOy-xL-wdm"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MAm-TG-kYM" secondAttribute="trailing" constant="12" id="4mg-zE-vVI"/>
+                <constraint firstItem="kbR-Yl-HUw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="5N8-ku-HcX"/>
+                <constraint firstItem="MAm-TG-kYM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="EKc-IY-bhE"/>
+                <constraint firstItem="MAm-TG-kYM" firstAttribute="leading" secondItem="kbR-Yl-HUw" secondAttribute="trailing" constant="16" id="PF5-2n-TT4"/>
+                <constraint firstItem="kbR-Yl-HUw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="UZE-ur-d7i"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MAm-TG-kYM" secondAttribute="bottom" constant="15" id="iLZ-TM-yzx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-191.19999999999999" y="-219.49025487256372"/>
+        </view>
+    </objects>
+</document>
