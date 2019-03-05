@@ -15,13 +15,16 @@ class MainTabBarController: UITabBarController {
     private let searchCoordinator: SearchCoordinator
     private let profileCoordinator: ProfileCoordinator
     
+    // TODO: Move this after
+    private let addPlantCoordinator: AddPlantCoordinator
+    
     // MARK: - Initializers
     
     init() {
         self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController())
         self.searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
         self.profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
-        
+        self.addPlantCoordinator = AddPlantCoordinator(navigationController: UINavigationController())
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,13 +47,15 @@ class MainTabBarController: UITabBarController {
         plantFeedCoordinator.start()
         searchCoordinator.start()
         profileCoordinator.start()
+        addPlantCoordinator.start()
     }
     
     private func setupTabBarViewControllers() {
         viewControllers = [
             plantFeedCoordinator.navigationController,
             searchCoordinator.navigationController,
-            profileCoordinator.navigationController
+            profileCoordinator.navigationController,
+            addPlantCoordinator.navigationController
         ]
     }
     

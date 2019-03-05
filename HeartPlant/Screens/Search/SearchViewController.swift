@@ -8,6 +8,11 @@
 
 import UIKit
 
+private enum SearchState {
+    case active
+    case inactive
+}
+
 class SearchViewController: UIViewController, Deinitcallable {
     
     // MARK: - Views
@@ -19,7 +24,18 @@ class SearchViewController: UIViewController, Deinitcallable {
         return cv
     }()
     
+    // MARK: - Search
+    
+    private var searchState: SearchState = .inactive
+    private let searchController: UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.dimsBackgroundDuringPresentation = false
+        sc.searchBar.placeholder = "Search plants"
+        return sc
+    }()
+    
     // MARK: - Styling Constants
+    
     private let cellWidth = UIScreen.main.bounds.width
     private let cellHeight: CGFloat = 45
     private let minimumLineSpacingForSection: CGFloat = 1
@@ -36,7 +52,11 @@ class SearchViewController: UIViewController, Deinitcallable {
         super.viewDidLoad()
         
         setupControllerStyling()
+        setupCollectionView()
+        setupSearchController()
     }
+    
+    // MARK: - Setup
     
     private func setupControllerStyling() {
         title = "Search"
@@ -48,6 +68,13 @@ class SearchViewController: UIViewController, Deinitcallable {
         collectionView.fillSuperview()
         collectionView.delegate = self
     }
+    
+    private func setupSearchController() {
+        self.definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
@@ -58,4 +85,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacingForSection
     }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
 }

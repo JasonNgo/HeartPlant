@@ -9,6 +9,7 @@
 import UIKit
 
 class PlantFeedCoordinator: Coordinator {
+    
     let navigationController: UINavigationController
     private var plantFeedViewController: PlantFeedViewController?
     
