@@ -13,6 +13,8 @@ class PlantFeedCoordinator: Coordinator {
     let navigationController: UINavigationController
     private var plantFeedViewController: PlantFeedViewController?
     
+    private var plantDetailCoordinator: PlantDetailCoordinator?
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         super.init()
@@ -23,6 +25,7 @@ class PlantFeedCoordinator: Coordinator {
     override func start() {
         let plantFeedDataSource = PlantFeedDataSource()
         let plantFeedViewController = PlantFeedViewController(dataSource: plantFeedDataSource)
+        plantFeedViewController.delegate = self
         plantFeedViewController.tabBarItem.title = "Plants"
         plantFeedViewController.tabBarItem.image = #imageLiteral(resourceName: "icons8-potted_plant")
         setDeallocallable(with: plantFeedViewController)
@@ -39,5 +42,16 @@ class PlantFeedCoordinator: Coordinator {
         navigationController.navigationBar.largeTitleTextAttributes = titleTextAttributes
     }
     
+}
+
+extension PlantFeedCoordinator: PlantFeedViewControllerDelegate {
+    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem selected: Plant) {
+        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: selected)
+        plantDetailCoordinator.stop = { [weak self] in
+            self?.plantDetailCoordinator = nil
+        }
+        plantDetailCoordinator.start()
+        self.plantDetailCoordinator = plantDetailCoordinator
+    }
 }
 

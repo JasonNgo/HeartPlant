@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantDetailTopSectionCell" rowHeight="164" id="KGk-i7-Jjw" customClass="PlantDetailTopSectionCell" customModule="HeartPlant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="443" height="154"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="443" height="153.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="krc-yW-WVC">
+                        <rect key="frame" x="30" y="21" width="268" height="112"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Watering in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69Q-J9-0qO" userLabel="wateringTitleLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="125" height="19"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="10 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIQ-0a-bU0" userLabel="daysLabel">
+                                <rect key="frame" x="0.0" y="27" width="179" height="58"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="watering every 7 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oR-VQ-fEv" userLabel="wateringRuleLabel">
+                                <rect key="frame" x="0.0" y="93" width="166.5" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgg-BQ-Rfg" userLabel="waterPlantButton">
+                        <rect key="frame" x="308" y="19.5" width="115" height="115"/>
+                        <color key="backgroundColor" red="0.28951823710000002" green="0.81417971850000004" blue="0.75030606990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="5co-Ez-gee"/>
+                            <constraint firstAttribute="height" constant="115" id="xv3-wS-zI6"/>
+                        </constraints>
+                        <state key="normal" image="icons8-water"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Qgg-BQ-Rfg" firstAttribute="leading" secondItem="krc-yW-WVC" secondAttribute="trailing" constant="10" id="2Fj-Bv-gPi"/>
+                    <constraint firstItem="krc-yW-WVC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="2XJ-Fs-75z"/>
+                    <constraint firstItem="krc-yW-WVC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="OSg-PB-jyz"/>
+                    <constraint firstAttribute="trailing" secondItem="Qgg-BQ-Rfg" secondAttribute="trailing" constant="20" id="dBh-kd-VXk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="krc-yW-WVC" secondAttribute="bottom" constant="10" id="i5m-Iv-e0G"/>
+                    <constraint firstItem="Qgg-BQ-Rfg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uLq-4G-cAQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="daysLabel" destination="vIQ-0a-bU0" id="t1D-7c-kuA"/>
+                <outlet property="waterPlantButton" destination="Qgg-BQ-Rfg" id="Ykb-Li-zEg"/>
+                <outlet property="wateringRuleLabel" destination="6oR-VQ-fEv" id="viZ-ER-PuH"/>
+                <outlet property="wateringTitleLabel" destination="69Q-J9-0qO" id="Iep-Nk-eAm"/>
+            </connections>
+            <point key="canvasLocation" x="280.80000000000001" y="247.37631184407797"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icons8-water" width="75" height="75"/>
+    </resources>
+</document>

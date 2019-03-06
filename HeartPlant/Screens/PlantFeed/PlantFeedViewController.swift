@@ -8,10 +8,13 @@
 
 import UIKit
 
+protocol PlantFeedViewControllerDelegate: AnyObject {
+    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem selected: Plant)
+}
+
 class PlantFeedViewController: UIViewController, Deinitcallable {
 
     // MARK: - Views
-    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,8 +28,10 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     private let minimumLineSpacingForSection: CGFloat = 0
     
     // MARK: - Model
-
     private let dataSource: PlantFeedDataSource
+    
+    // MARK: - Delegate
+    weak var delegate: PlantFeedViewControllerDelegate?
     
     // MARK: - Init
     var onDeinit: (() -> Void)?
@@ -40,6 +45,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         super.init(nibName: nil, bundle: nil)
     }
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +55,6 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     }
     
     // MARK: - Setup
-    
     private func setupControllerStyling() {
         title = "Plants"
         view.backgroundColor = .white
@@ -68,18 +73,19 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         navigationItem.rightBarButtonItem = addButton
     }
     
+    // MARK: - Selectors
     @objc private func handleAddButtonPressed() {
         dataSource.addPlant()
         collectionView.reloadData()
     }
     
     // MARK: - Required
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension PlantFeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
@@ -87,5 +93,10 @@ extension PlantFeedViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacingForSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedItem = dataSource.item(at: indexPath.item) else { return }
+        delegate?.plantFeedViewController(self, didSelectItem: selectedItem)
     }
 }
