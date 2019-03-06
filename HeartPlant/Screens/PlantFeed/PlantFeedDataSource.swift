@@ -16,15 +16,34 @@ class PlantFeedDataSource: NSObject {
         return "PlantFeedCell"
     }
     
+    override init() {
+        super.init()
+        
+        do {
+            let plantsData = FileAccessor.getPlantsData()
+            let plants = try JSONDecoder().decode([Plant].self, from: plantsData)
+            self.plants = plants
+        } catch {
+            print("Error attempt to decode plants")
+        }
+    }
+    
+    func item(at index: Int) -> Plant? {
+        guard !plants.isEmpty else {
+            return nil
+        }
+        
+        return plants[index]
+    }
+    
     func addPlant() {
-//        let plant = Plant(name: "New Plant: \(plants.count + 1)")
-//        plants.append(plant)
+
     }
 }
 
 extension PlantFeedDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return plants.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -32,9 +51,9 @@ extension PlantFeedDataSource: UICollectionViewDataSource {
             fatalError("Unable to dequeue PlantFeedCell")
         }
         
-//        let plant = plants[indexPath.item]
-//        let viewModel = PlantFeedCellViewModel(plant: plant)
-//        cell.configureCell(using: viewModel)
+        let plant = plants[indexPath.item]
+        let viewModel = PlantFeedCellViewModel(plant: plant)
+        cell.configureCell(using: viewModel)
         
         return cell
     }

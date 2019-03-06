@@ -9,30 +9,32 @@
 import Foundation
 
 struct Plant {
+    let id: Int
     let name: String
-    let family: String
     let scientificName: String
-    
-    let light: String
-    let position: String
-    let temperatureRange: String
-    let watering: String
-    let seasonalCare: String
-    let feeding: String
-    let soil: String
+
+//    let family: String
+//    let light: String
+//    let position: String
+//    let temperatureRange: String
+//    let watering: String
+//    let seasonalCare: String
+//    let feeding: String
+//    let soil: String
 }
 
 extension Plant: Decodable {
     enum CodingKeys: String, CodingKey {
+        case id
         case name
-        case family
         case scientificName = "scientific_name"
-        case light
-        case position
-        case temperatureRange
-        case watering
-        case seasonalCare
-        case feeding
-        case soil
+//        case family
+//        case light
+//        case position
+//        case temperatureRange
+//        case watering
+//        case seasonalCare
+//        case feeding
+//        case soil
     }
 }

@@ -14,20 +14,16 @@ class MainTabBarController: UITabBarController {
     private let plantFeedCoordinator: PlantFeedCoordinator
     private let searchCoordinator: SearchCoordinator
     private let profileCoordinator: ProfileCoordinator
-    
-    // TODO: Move this after
-    private let addPlantCoordinator: AddPlantCoordinator
-    
+
     // MARK: - Initializers
-    
     init() {
         self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController())
         self.searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
         self.profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
-        self.addPlantCoordinator = AddPlantCoordinator(navigationController: UINavigationController())
         super.init(nibName: nil, bundle: nil)
     }
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +33,6 @@ class MainTabBarController: UITabBarController {
     }
     
     // MARK: - Setup
-    
     private func setupTabBarController() {
         view.backgroundColor = .white
         tabBar.tintColor = ColorManager.shared.primaryColor
@@ -47,20 +42,17 @@ class MainTabBarController: UITabBarController {
         plantFeedCoordinator.start()
         searchCoordinator.start()
         profileCoordinator.start()
-        addPlantCoordinator.start()
     }
     
     private func setupTabBarViewControllers() {
         viewControllers = [
             plantFeedCoordinator.navigationController,
             searchCoordinator.navigationController,
-            profileCoordinator.navigationController,
-            addPlantCoordinator.navigationController
+            profileCoordinator.navigationController
         ]
     }
     
     // MARK: - Required
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

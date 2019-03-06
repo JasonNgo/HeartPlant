@@ -1,17 +1,21 @@
 [
     {
+        "id": 1,
         "name": "Alder",
         "scientific_name": "Alnus"
     },
     {
+        "id": 2,
         "name": "Almond",
         "scientific_name": "Prunus dulcis"
     },
     {
+        "id": 3,
         "name": "Tall Ambrosia",
         "scientific_name": "Ambrosia trifida"
     },
     {
+        "id": 4,
         "name": "Apricot",
         "scientific_name": "Prunus armeniaca"
     }
