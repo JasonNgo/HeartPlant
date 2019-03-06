@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Redhot Cat-tail</string>
+		<key>scientificName</key>
+		<string>Acalypha hispida</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Urn Plant</string>
+		<key>scientificName</key>
+		<string>Aechmea</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Chinese Evergreen</string>
+		<key>scientificName</key>
+		<string>Aglaonema</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Flamingo Flower</string>
+		<key>scientificName</key>
+		<string>Anthurium</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Saffron Spike</string>
+		<key>scientificName</key>
+		<string>Aphelandra</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>False Aralia</string>
+		<key>scientificName</key>
+		<string>Aralia elegantissima</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Norfolk Island Plant</string>
+		<key>scientificName</key>
+		<string>Araucaria</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cast Iron Plant</string>
+		<key>scientificName</key>
+		<string>Aspidistra lurida</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Florists&apos; Azalea</string>
+		<key>scientificName</key>
+		<string>Azalea indica</string>
+		<key>isFavourited</key>
+		<false/>
+	</dict>
+</array>
+</plist>

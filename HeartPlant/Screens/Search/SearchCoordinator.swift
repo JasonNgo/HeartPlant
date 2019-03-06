@@ -10,17 +10,20 @@ import UIKit
 
 class SearchCoordinator: Coordinator {
     let navigationController: UINavigationController
+    private let coreDataStack: CoreDataStack
     private var searchViewController: SearchViewController?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, coreDataStack: CoreDataStack) {
         self.navigationController = navigationController
+        self.coreDataStack = coreDataStack
         super.init()
         
         setupNavigationControllerStyling()
     }
     
     override func start() {
-        let searchViewController = SearchViewController()
+        let searchDataSource = SearchDataSource(coreDataStack: coreDataStack)
+        let searchViewController = SearchViewController(dataSource: searchDataSource)
         searchViewController.tabBarItem.title = "Search"
         searchViewController.tabBarItem.image = #imageLiteral(resourceName: "icons8-search_filled")
         setDeallocallable(with: searchViewController)

@@ -103,6 +103,7 @@ class PlantFeedCell: UICollectionViewCell {
     
     func configureCell(using viewModel: PlantFeedCellViewModel) {
         nameLabel.text = viewModel.nameText
+        scientificNameLabel.text = viewModel.scientificNameText
     }
     
     // MARK: - Required
