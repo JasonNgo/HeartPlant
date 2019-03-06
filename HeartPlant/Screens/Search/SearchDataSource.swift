@@ -24,12 +24,7 @@ class SearchDataSource: NSObject {
         
         let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
         let results = try! coreDataStack.managedContext.fetch(resultsFetch)
-        
-        if results.count > 0 {
-            self.results = results
-        } else {
-            coreDataStack.setupPlantData()
-        }
+        self.results = results
     }
     
     func item(at index: Int) -> Plant? {

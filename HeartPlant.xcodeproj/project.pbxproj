@@ -18,8 +18,6 @@
 		7D765E4B221E0111005BDB30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D765E49221E0111005BDB30 /* LaunchScreen.storyboard */; };
 		7D765E56221E0111005BDB30 /* HeartPlantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E55221E0111005BDB30 /* HeartPlantTests.swift */; };
 		7D765E61221E068F005BDB30 /* PlantFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E60221E068F005BDB30 /* PlantFeedViewController.swift */; };
-		7D765E68221E085B005BDB30 /* Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E63221E085B005BDB30 /* Safe.swift */; };
-		7D765E69221E085B005BDB30 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E64221E085B005BDB30 /* Result.swift */; };
 		7D765E6A221E085B005BDB30 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E65221E085B005BDB30 /* UIView+Extensions.swift */; };
 		7D765E6B221E085B005BDB30 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E66221E085B005BDB30 /* Coordinator.swift */; };
 		7D765E6C221E085B005BDB30 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E67221E085B005BDB30 /* UIColor+Extensions.swift */; };
@@ -27,7 +25,6 @@
 		7D765E72221E0A88005BDB30 /* PlantFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E71221E0A88005BDB30 /* PlantFeedCoordinator.swift */; };
 		7D765E78221E0E29005BDB30 /* PlantFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E77221E0E29005BDB30 /* PlantFeedCell.swift */; };
 		7D765E7A221E0E85005BDB30 /* PlantFeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */; };
-		7D765E7C221E1176005BDB30 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E7B221E1176005BDB30 /* Plant.swift */; };
 		7D8325DE221FAED5001DDF22 /* PlantDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8325DD221FAED5001DDF22 /* PlantDetailCoordinator.swift */; };
 		7D93FED32230227B00585EAB /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D93FED22230227B00585EAB /* SearchDataSource.swift */; };
 		7D93FED52230281400585EAB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D93FED42230281400585EAB /* CoreDataStack.swift */; };
@@ -74,8 +71,6 @@
 		7D765E55221E0111005BDB30 /* HeartPlantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartPlantTests.swift; sourceTree = "<group>"; };
 		7D765E57221E0111005BDB30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D765E60221E068F005BDB30 /* PlantFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedViewController.swift; sourceTree = "<group>"; };
-		7D765E63221E085B005BDB30 /* Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Safe.swift; sourceTree = "<group>"; };
-		7D765E64221E085B005BDB30 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7D765E65221E085B005BDB30 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		7D765E66221E085B005BDB30 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		7D765E67221E085B005BDB30 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -83,7 +78,6 @@
 		7D765E71221E0A88005BDB30 /* PlantFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCoordinator.swift; sourceTree = "<group>"; };
 		7D765E77221E0E29005BDB30 /* PlantFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCell.swift; sourceTree = "<group>"; };
 		7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCellViewModel.swift; sourceTree = "<group>"; };
-		7D765E7B221E1176005BDB30 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		7D8325DD221FAED5001DDF22 /* PlantDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailCoordinator.swift; sourceTree = "<group>"; };
 		7D93FED22230227B00585EAB /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
 		7D93FED42230281400585EAB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -144,8 +138,6 @@
 		7D765E34221E010F005BDB30 = {
 			isa = PBXGroup;
 			children = (
-				7D93FEE12230340800585EAB /* Plant+CoreDataProperties.swift */,
-				7D93FED922302C3000585EAB /* Plant+CoreDataClass.swift */,
 				7D765E3F221E010F005BDB30 /* HeartPlant */,
 				7D765E54221E0111005BDB30 /* HeartPlantTests */,
 				7D765E3E221E010F005BDB30 /* Products */,
@@ -186,8 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				7D765E66221E085B005BDB30 /* Coordinator.swift */,
-				7D765E64221E085B005BDB30 /* Result.swift */,
-				7D765E63221E085B005BDB30 /* Safe.swift */,
 				7D765E67221E085B005BDB30 /* UIColor+Extensions.swift */,
 				7D765E65221E085B005BDB30 /* UIView+Extensions.swift */,
 			);
@@ -208,7 +198,8 @@
 		7D765E6E221E095A005BDB30 /* PlantFeed */ = {
 			isa = PBXGroup;
 			children = (
-				7D765E7B221E1176005BDB30 /* Plant.swift */,
+				7D93FED922302C3000585EAB /* Plant+CoreDataClass.swift */,
+				7D93FEE12230340800585EAB /* Plant+CoreDataProperties.swift */,
 				7D765E77221E0E29005BDB30 /* PlantFeedCell.swift */,
 				7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */,
 				7D765E71221E0A88005BDB30 /* PlantFeedCoordinator.swift */,
@@ -224,8 +215,7 @@
 			children = (
 				7D765E40221E010F005BDB30 /* AppDelegate.swift */,
 				7DBC1F71221EFBDA0058B11D /* MainTabBarController.swift */,
-				7D93FED42230281400585EAB /* CoreDataStack.swift */,
-				7D93FED622302B5000585EAB /* HeartPlant.xcdatamodeld */,
+				7D93FEE322303CCD00585EAB /* CoreData */,
 				7D3FFF9D222EEC440067A870 /* Managers */,
 			);
 			path = App;
@@ -241,14 +231,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		7D93FEE322303CCD00585EAB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7D93FED42230281400585EAB /* CoreDataStack.swift */,
+				7D93FED622302B5000585EAB /* HeartPlant.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		7DBC1F65221EF75C0058B11D /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				7DBC1F6A221EF9200058B11D /* SearchCell.swift */,
 				7DBC1F6C221EF9D50058B11D /* SearchCellViewModel.swift */,
 				7DBC1F68221EF7980058B11D /* SearchCoordinator.swift */,
-				7DBC1F66221EF77B0058B11D /* SearchViewController.swift */,
 				7D93FED22230227B00585EAB /* SearchDataSource.swift */,
+				7DBC1F66221EF77B0058B11D /* SearchViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -382,7 +381,6 @@
 				7D8325DE221FAED5001DDF22 /* PlantDetailCoordinator.swift in Sources */,
 				7D765E61221E068F005BDB30 /* PlantFeedViewController.swift in Sources */,
 				7D93FED52230281400585EAB /* CoreDataStack.swift in Sources */,
-				7D765E68221E085B005BDB30 /* Safe.swift in Sources */,
 				7D765E7A221E0E85005BDB30 /* PlantFeedCellViewModel.swift in Sources */,
 				7DBC1F76221F054C0058B11D /* ColorManager.swift in Sources */,
 				7D93FED822302B5000585EAB /* HeartPlant.xcdatamodeld in Sources */,
@@ -392,7 +390,6 @@
 				7D765E6B221E085B005BDB30 /* Coordinator.swift in Sources */,
 				7D3FFFA8222F3A1E0067A870 /* PlantDetailCharacteristicsInfoCell.swift in Sources */,
 				7D765E72221E0A88005BDB30 /* PlantFeedCoordinator.swift in Sources */,
-				7D765E7C221E1176005BDB30 /* Plant.swift in Sources */,
 				7DBC1F6B221EF9200058B11D /* SearchCell.swift in Sources */,
 				7D765E6A221E085B005BDB30 /* UIView+Extensions.swift in Sources */,
 				7DBC1F69221EF7980058B11D /* SearchCoordinator.swift in Sources */,
@@ -400,7 +397,6 @@
 				7DBC1F67221EF77B0058B11D /* SearchViewController.swift in Sources */,
 				7D93FEE22230340800585EAB /* Plant+CoreDataProperties.swift in Sources */,
 				7D93FED32230227B00585EAB /* SearchDataSource.swift in Sources */,
-				7D765E69221E085B005BDB30 /* Result.swift in Sources */,
 				7D93FEDB22302C3000585EAB /* Plant+CoreDataClass.swift in Sources */,
 				7D765E41221E010F005BDB30 /* AppDelegate.swift in Sources */,
 				7D3FFFA0222F332C0067A870 /* PlantDetailTopSectionCell.swift in Sources */,
