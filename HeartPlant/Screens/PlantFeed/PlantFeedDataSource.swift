@@ -18,14 +18,6 @@ class PlantFeedDataSource: NSObject {
     
     override init() {
         super.init()
-        
-        do {
-            let plantsData = FileAccessor.getPlantsData()
-            let plants = try JSONDecoder().decode([Plant].self, from: plantsData)
-            self.plants = plants
-        } catch {
-            print("Error attempt to decode plants")
-        }
     }
     
     func item(at index: Int) -> Plant? {

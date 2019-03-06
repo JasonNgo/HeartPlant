@@ -18,6 +18,8 @@ class PlantDetailTopSectionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        waterPlantButton.layer.cornerRadius = 8.0
     }
 
 //    func configureCell(with viewModel: PlantDetailCellViewModel) {

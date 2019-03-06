@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plants info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2r-8p-jum">
-                        <rect key="frame" x="20" y="19" width="84.5" height="33"/>
+                        <rect key="frame" x="20" y="19" width="84.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                     <constraint firstItem="I2r-8p-jum" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="F2D-WR-drZ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="YEi-lC-uQN" secondAttribute="trailing" id="G4I-5L-Ca2"/>
                     <constraint firstItem="I2r-8p-jum" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="TuI-B4-zqt"/>
-                    <constraint firstItem="YEi-lC-uQN" firstAttribute="top" secondItem="I2r-8p-jum" secondAttribute="bottom" constant="8" id="WVE-bo-qOB"/>
+                    <constraint firstItem="YEi-lC-uQN" firstAttribute="top" secondItem="I2r-8p-jum" secondAttribute="bottom" constant="12" id="WVE-bo-qOB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="YEi-lC-uQN" secondAttribute="bottom" constant="8" id="eSV-7u-Fj7"/>
                 </constraints>
             </tableViewCellContentView>

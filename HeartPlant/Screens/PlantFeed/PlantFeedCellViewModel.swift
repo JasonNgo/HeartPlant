@@ -9,8 +9,8 @@
 import UIKit
 
 struct PlantFeedCellViewModel {
-    let nameText: String
-    let scientificNameText: String
+    let nameText: String?
+    let scientificNameText: String?
 }
 
 extension PlantFeedCellViewModel {

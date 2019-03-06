@@ -14,11 +14,15 @@ class MainTabBarController: UITabBarController {
     private let plantFeedCoordinator: PlantFeedCoordinator
     private let searchCoordinator: SearchCoordinator
     private let profileCoordinator: ProfileCoordinator
+    
+    // MARK: - Data Source
+    private let coreDataStack: CoreDataStack
 
     // MARK: - Initializers
     init() {
+        self.coreDataStack = CoreDataStack(modelName: "HeartPlant")
         self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController())
-        self.searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
+        self.searchCoordinator = SearchCoordinator(navigationController: UINavigationController(), coreDataStack: coreDataStack)
         self.profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
         super.init(nibName: nil, bundle: nil)
     }
@@ -52,10 +56,14 @@ class MainTabBarController: UITabBarController {
         ]
     }
     
+    // MARK: - Core Data
+    func shouldSaveContext() {
+        coreDataStack.saveContext()
+    }
+    
     // MARK: - Required
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 

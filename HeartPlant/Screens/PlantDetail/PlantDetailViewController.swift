@@ -52,8 +52,8 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     // MARK: - Setup
     private func setupViewController() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
+//        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationItem.largeTitleDisplayMode = .never
     }
     
     private func setupTableView() {

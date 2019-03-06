@@ -9,5 +9,11 @@
 import UIKit
 
 struct SearchCellViewModel {
+    let nameText: String?
+    let scientificNameText: String?
     
+    init(plant: Plant) {
+        self.nameText = plant.name
+        self.scientificNameText = plant.scientificName
+    }
 }
