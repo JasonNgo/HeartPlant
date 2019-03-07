@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PlantFeedViewControllerDelegate: AnyObject {
-    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem selected: Plant)
+    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem item: Plant)
 }
 
 class PlantFeedViewController: UIViewController, Deinitcallable {
@@ -90,7 +90,7 @@ extension PlantFeedViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedItem = dataSource.item(at: indexPath.item) else { return }
-        delegate?.plantFeedViewController(self, didSelectItem: selectedItem)
+        guard let item = dataSource.item(at: indexPath.item) else { return }
+        delegate?.plantFeedViewController(self, didSelectItem: item)
     }
 }

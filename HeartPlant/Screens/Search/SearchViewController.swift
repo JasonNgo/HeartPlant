@@ -13,6 +13,10 @@ private enum SearchState {
     case inactive
 }
 
+protocol SearchViewControllerDelegate: AnyObject {
+    func searchViewController(_ searchViewController: SearchViewController, didSelectItem item: Plant)
+}
+
 class SearchViewController: UIViewController, Deinitcallable {
     
     // MARK: - Views
@@ -39,6 +43,9 @@ class SearchViewController: UIViewController, Deinitcallable {
     
     // MARK: - Model
     private let dataSource: SearchDataSource
+    
+    // MARK: - Delegate
+    weak var delegate: SearchViewControllerDelegate?
     
     // MARK: - Deinit
     var onDeinit: (() -> Void)?
@@ -88,6 +95,7 @@ class SearchViewController: UIViewController, Deinitcallable {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
@@ -95,6 +103,11 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacingForSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.item(at: indexPath.item) else { return }
+        delegate?.searchViewController(self, didSelectItem: item)
     }
 }
 
