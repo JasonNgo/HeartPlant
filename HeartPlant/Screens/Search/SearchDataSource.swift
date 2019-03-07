@@ -33,7 +33,7 @@ class SearchDataSource: NSObject {
     }
     
     func filterResults(with searchText: String) {
-        if searchText == "" {
+        guard !searchText.isEmpty else {
             fetchAllPlantEntities()
             return
         }
@@ -74,5 +74,4 @@ extension SearchDataSource: UICollectionViewDataSource {
         return cell
     }
 }
-
 

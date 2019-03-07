@@ -33,13 +33,13 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     // MARK: - Delegate
     weak var delegate: PlantFeedViewControllerDelegate?
     
-    // MARK: - Init
+    // MARK: - Deinit
     var onDeinit: (() -> Void)?
-    
     deinit {
         onDeinit?()
     }
     
+    // MARK: - Init
     init(dataSource: PlantFeedDataSource) {
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
@@ -51,7 +51,6 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         
         setupControllerStyling()
         setupCollectionView()
-        setupRightBarButton()
     }
     
     // MARK: - Setup
@@ -66,11 +65,6 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         collectionView.delegate = self
         collectionView.dataSource = dataSource
         collectionView.register(PlantFeedCell.self, forCellWithReuseIdentifier: dataSource.reuseId)
-    }
-    
-    private func setupRightBarButton() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddButtonPressed))
-        navigationItem.rightBarButtonItem = addButton
     }
     
     // MARK: - Selectors
