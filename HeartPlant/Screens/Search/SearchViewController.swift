@@ -99,5 +99,24 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchState = .active
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchState = .inactive
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterCollectionResults(with: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filterCollectionResults(with: "")
+    }
+    
+    private func filterCollectionResults(with searchText: String) {
+        dataSource.filterResults(with: searchText)
+        collectionView.reloadData()
+    }
 }

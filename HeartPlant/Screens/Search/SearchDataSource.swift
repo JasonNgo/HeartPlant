@@ -13,7 +13,7 @@ class SearchDataSource: NSObject {
     
     private var results: [Plant] = []
     private let coreDataStack: CoreDataStack
-    
+
     var reuseId: String {
         return "SearchCell"
     }
@@ -21,10 +21,7 @@ class SearchDataSource: NSObject {
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
         super.init()
-        
-        let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
-        let results = try! coreDataStack.managedContext.fetch(resultsFetch)
-        self.results = results
+        fetchAllPlantEntities()
     }
     
     func item(at index: Int) -> Plant? {
@@ -33,6 +30,30 @@ class SearchDataSource: NSObject {
         }
         
         return results[index]
+    }
+    
+    func filterResults(with searchText: String) {
+        if searchText == "" {
+            fetchAllPlantEntities()
+            return
+        }
+        
+        let predicate = NSCompoundPredicate(
+            type: .or,
+            subpredicates: [
+                NSPredicate(format: "name CONTAINS[c] '\(searchText)'"),
+                NSPredicate(format: "scientificName CONTAINS[c] '\(searchText)'")
+            ]
+        )
+        
+        fetchAllPlantEntities(predicate: predicate)
+    }
+    
+    private func fetchAllPlantEntities(predicate: NSPredicate? = nil) {
+        let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
+        resultsFetch.predicate = predicate
+        let results = try! coreDataStack.managedContext.fetch(resultsFetch)
+        self.results = results
     }
 }
 
