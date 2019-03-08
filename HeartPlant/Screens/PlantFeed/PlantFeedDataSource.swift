@@ -19,8 +19,8 @@ class PlantFeedDataSource: NSObject {
     
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
-        self.plants = coreDataStack.fetchFavouritedPlantEntities()
         super.init()
+        fetchItems()
     }
     
     func item(at index: Int) -> Plant? {
@@ -31,7 +31,9 @@ class PlantFeedDataSource: NSObject {
         return plants[index]
     }
     
-
+    func fetchItems() {
+        self.plants = coreDataStack.fetchFavouritedPlantEntities()
+    }
 }
 
 extension PlantFeedDataSource: UICollectionViewDataSource {

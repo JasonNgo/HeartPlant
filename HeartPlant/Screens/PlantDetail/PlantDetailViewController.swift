@@ -78,7 +78,8 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     }
     
     private func setupFavouriteButton() {
-        let favouriteButton = UIBarButtonItem(title: "Favourite", style: .plain, target: self, action: #selector(handleFavouritePressed))
+        let title = plant.isFavourited ? "Favourited" : "Favourite"
+        let favouriteButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(handleFavouritePressed))
         navigationItem.rightBarButtonItem = favouriteButton
     }
     
@@ -87,8 +88,9 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
         let updateResult = coreDataStack.managedContext.updatePlantFavourited(to: updatedIsFavourited, for: plant)
         
         if updateResult {
-            plant.isFavourited.toggle()
-            // TODO: Updat styling of favourite
+            plant.isFavourited = updatedIsFavourited
+            let title = updatedIsFavourited ? "Favourited" : "Favourite"
+            navigationItem.rightBarButtonItem?.title = title
         }
     }
     

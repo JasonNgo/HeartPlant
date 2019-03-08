@@ -48,6 +48,12 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     }
     
     // MARK: - View Life Cycle
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dataSource.fetchItems()
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,7 +80,8 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFavourites), name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
     }
     
-    @objc func handleUpdateFavourites() {
+    @objc private func handleUpdateFavourites() {
+        dataSource.fetchItems()
         collectionView.reloadData()
     }
     

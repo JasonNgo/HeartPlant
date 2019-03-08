@@ -104,13 +104,13 @@ class CoreDataStack {
         }
     }
     
-    //    func clearAllPlantEntries() {
-    //        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Plant")
-    //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    //        do {
-    //            try storeContainer.persistentStoreCoordinator.execute(deleteRequest, with: managedContext)
-    //        } catch let error as NSError {
-    //            print("Unresolved error: \(error), \(error.userInfo)")
-    //        }
-    //    }
+    func clearAllPlantEntries() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Plant")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try storeContainer.persistentStoreCoordinator.execute(deleteRequest, with: managedContext)
+        } catch let error as NSError {
+            print("Unresolved error: \(error), \(error.userInfo)")
+        }
+    }
 }

@@ -19,9 +19,10 @@ extension NSManagedObjectContext {
             if results.count > 0 {
                 let resultsData = results as! [Plant]
                 let object = resultsData.first!
-                object.setValue(plant.isFavourited, forKey: "isFavourited")
+                object.setValue(isFavourited, forKey: "isFavourited")
                 
                 try self.save()
+                
                 NotificationCenter.default.post(name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
                 return true
             }
