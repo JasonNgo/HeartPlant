@@ -25,6 +25,7 @@
 		7D765E72221E0A88005BDB30 /* PlantFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E71221E0A88005BDB30 /* PlantFeedCoordinator.swift */; };
 		7D765E78221E0E29005BDB30 /* PlantFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E77221E0E29005BDB30 /* PlantFeedCell.swift */; };
 		7D765E7A221E0E85005BDB30 /* PlantFeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */; };
+		7D7E881E2232230D0018A583 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E881D2232230D0018A583 /* NSManagedObjectContext+Extensions.swift */; };
 		7D8325DE221FAED5001DDF22 /* PlantDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8325DD221FAED5001DDF22 /* PlantDetailCoordinator.swift */; };
 		7D93FED32230227B00585EAB /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D93FED22230227B00585EAB /* SearchDataSource.swift */; };
 		7D93FED52230281400585EAB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D93FED42230281400585EAB /* CoreDataStack.swift */; };
@@ -78,6 +79,7 @@
 		7D765E71221E0A88005BDB30 /* PlantFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCoordinator.swift; sourceTree = "<group>"; };
 		7D765E77221E0E29005BDB30 /* PlantFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCell.swift; sourceTree = "<group>"; };
 		7D765E79221E0E85005BDB30 /* PlantFeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantFeedCellViewModel.swift; sourceTree = "<group>"; };
+		7D7E881D2232230D0018A583 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		7D8325DD221FAED5001DDF22 /* PlantDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailCoordinator.swift; sourceTree = "<group>"; };
 		7D93FED22230227B00585EAB /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
 		7D93FED42230281400585EAB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				7D93FED42230281400585EAB /* CoreDataStack.swift */,
+				7D7E881D2232230D0018A583 /* NSManagedObjectContext+Extensions.swift */,
 				7D93FED622302B5000585EAB /* HeartPlant.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -391,6 +394,7 @@
 				7D3FFFA8222F3A1E0067A870 /* PlantDetailCharacteristicsInfoCell.swift in Sources */,
 				7D765E72221E0A88005BDB30 /* PlantFeedCoordinator.swift in Sources */,
 				7DBC1F6B221EF9200058B11D /* SearchCell.swift in Sources */,
+				7D7E881E2232230D0018A583 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				7D765E6A221E085B005BDB30 /* UIView+Extensions.swift in Sources */,
 				7DBC1F69221EF7980058B11D /* SearchCoordinator.swift in Sources */,
 				7D765E6C221E085B005BDB30 /* UIColor+Extensions.swift in Sources */,

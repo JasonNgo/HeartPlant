@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SearchDataSource: NSObject {
     
@@ -20,8 +19,8 @@ class SearchDataSource: NSObject {
     
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
+        self.results = coreDataStack.fetchPlantEntries()
         super.init()
-        fetchAllPlantEntities()
     }
     
     func item(at index: Int) -> Plant? {
@@ -34,31 +33,11 @@ class SearchDataSource: NSObject {
     
     func filterResults(with searchText: String) {
         guard !searchText.isEmpty else {
-            fetchAllPlantEntities()
+            results = coreDataStack.fetchPlantEntries()
             return
         }
         
-        let predicate = NSCompoundPredicate(
-            type: .or,
-            subpredicates: [
-                NSPredicate(format: "name CONTAINS[c] '\(searchText)'"),
-                NSPredicate(format: "scientificName CONTAINS[c] '\(searchText)'")
-            ]
-        )
-        
-        fetchAllPlantEntities(predicate: predicate)
-    }
-    
-    private func fetchAllPlantEntities(predicate: NSPredicate? = nil) {
-        let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
-        resultsFetch.predicate = predicate
-        
-        do {
-            let results = try coreDataStack.managedContext.fetch(resultsFetch)
-            self.results = results
-        } catch let error as NSError {
-            print("Unresolved error: \(error), \(error.userInfo)")
-        }
+        results = coreDataStack.fetchPlantEntries(with: searchText)
     }
 }
 

@@ -28,6 +28,7 @@ class CoreDataStack {
         return container
     }()
     
+    // MARK: - Init
     init(modelName: String) {
         self.modelName = modelName
         setupPlantData()
@@ -55,13 +56,28 @@ class CoreDataStack {
         saveContext()
     }
     
-    func clearAllPlantEntries() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Plant")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    func fetchPlantEntries(with searchText: String? = nil) -> [Plant] {
+        let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
+        
+        if searchText != nil {
+            let predicate = NSCompoundPredicate(
+                type: .or,
+                subpredicates: [
+                    NSPredicate(format: "name CONTAINS[c] '\(searchText!)'"),
+                    NSPredicate(format: "scientificName CONTAINS[c] '\(searchText!)'")
+                ]
+            )
+            resultsFetch.predicate = predicate
+        } else {
+            resultsFetch.predicate = nil
+        }
+        
         do {
-            try storeContainer.persistentStoreCoordinator.execute(deleteRequest, with: managedContext)
+            let results = try managedContext.fetch(resultsFetch)
+            return results
         } catch let error as NSError {
             print("Unresolved error: \(error), \(error.userInfo)")
+            return []
         }
     }
     
@@ -75,4 +91,13 @@ class CoreDataStack {
         }
     }
     
+    //    func clearAllPlantEntries() {
+    //        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Plant")
+    //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    //        do {
+    //            try storeContainer.persistentStoreCoordinator.execute(deleteRequest, with: managedContext)
+    //        } catch let error as NSError {
+    //            print("Unresolved error: \(error), \(error.userInfo)")
+    //        }
+    //    }
 }

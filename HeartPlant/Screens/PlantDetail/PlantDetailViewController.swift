@@ -83,18 +83,12 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     }
     
     @objc func handleFavouritePressed() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Plant")
-        fetchRequest.predicate = NSPredicate(format: "name = %@", plant.name ?? "")
-        do {
-            let results = try coreDataStack.managedContext.fetch(fetchRequest)
-            let resultsData = results as! [Plant]
-            let object = resultsData[0]
-            
+        let updatedIsFavourited = !plant.isFavourited
+        let updateResult = coreDataStack.managedContext.updatePlantFavourited(to: updatedIsFavourited, for: plant)
+        
+        if updateResult {
             plant.isFavourited.toggle()
-            object.setValue(plant.isFavourited, forKey: "isFavourited")
-            try coreDataStack.managedContext.save()
-        } catch let error as NSError {
-            print("Unresolved error: \(error), \(error.userInfo)")
+            // TODO: Updat styling of favourite
         }
     }
     
