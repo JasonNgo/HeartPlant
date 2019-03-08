@@ -84,13 +84,13 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     }
     
     @objc func handleFavouritePressed() {
-        let updatedIsFavourited = !plant.isFavourited
-        let updateResult = coreDataStack.managedContext.updatePlantFavourited(to: updatedIsFavourited, for: plant)
-        
-        if updateResult {
+        do {
+            let updatedIsFavourited = !plant.isFavourited
+            try coreDataStack.managedContext.updatePlantFavourited(to: updatedIsFavourited, for: plant)
             plant.isFavourited = updatedIsFavourited
-            let title = updatedIsFavourited ? "Favourited" : "Favourite"
-            navigationItem.rightBarButtonItem?.title = title
+            navigationItem.rightBarButtonItem?.title = updatedIsFavourited ? "Favourited" : "Favourite"
+        } catch let error as NSError {
+            print("Error when pressing favourite button: \(error)")
         }
     }
     

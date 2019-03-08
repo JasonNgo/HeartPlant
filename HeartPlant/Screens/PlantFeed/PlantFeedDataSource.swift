@@ -17,10 +17,18 @@ class PlantFeedDataSource: NSObject {
         return "PlantFeedCell"
     }
     
+    var isEmpty: Bool {
+        return plants.isEmpty
+    }
+    
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
         super.init()
         fetchItems()
+    }
+    
+    func fetchItems() {
+        self.plants = coreDataStack.fetchFavouritedPlantEntities()
     }
     
     func item(at index: Int) -> Plant? {
@@ -31,8 +39,19 @@ class PlantFeedDataSource: NSObject {
         return plants[index]
     }
     
-    func fetchItems() {
-        self.plants = coreDataStack.fetchFavouritedPlantEntities()
+    func remove(at index: Int) throws {
+        guard !isEmpty else {
+            fatalError("Trying to remove from an empty feed")
+        }
+        
+        guard let plant = item(at: index) else { return }
+        do {
+            try coreDataStack.managedContext.removePlantFromFavourited(plant: plant)
+            plants.remove(at: index)
+        } catch let error as NSError {
+            throw error
+        }
+
     }
 }
 

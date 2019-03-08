@@ -59,6 +59,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         
         setupControllerStyling()
         setupCollectionView()
+        setupGestureRecognizers()
         setupObservers()
     }
     
@@ -76,8 +77,39 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         collectionView.register(PlantFeedCell.self, forCellWithReuseIdentifier: dataSource.reuseId)
     }
     
+    private func setupGestureRecognizers() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+    
     private func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFavourites), name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
+    }
+    
+    @objc private func handleLongPressGesture(gesture: UILongPressGestureRecognizer) {
+        let location = gesture.location(in: collectionView)
+        
+        guard let selectedIndexPath = collectionView.indexPathForItem(at: location) else {
+            return
+        }
+        
+        let alertController = UIAlertController(title: "Delete Plant",
+                                                message: "Are you sure you'd like to delete this plant?",
+                                                preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [unowned self] (action) in
+            do {
+                try self.dataSource.remove(at: selectedIndexPath.item)
+                self.collectionView.deleteItems(at: [selectedIndexPath])
+            } catch let error as NSError {
+                print("There was an error attempting to delete: \(error)")
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
     @objc private func handleUpdateFavourites() {
