@@ -52,8 +52,13 @@ class SearchDataSource: NSObject {
     private func fetchAllPlantEntities(predicate: NSPredicate? = nil) {
         let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
         resultsFetch.predicate = predicate
-        let results = try! coreDataStack.managedContext.fetch(resultsFetch)
-        self.results = results
+        
+        do {
+            let results = try coreDataStack.managedContext.fetch(resultsFetch)
+            self.results = results
+        } catch let error as NSError {
+            print("Unresolved error: \(error), \(error.userInfo)")
+        }
     }
 }
 

@@ -46,12 +46,12 @@ class PlantFeedCoordinator: Coordinator {
 
 extension PlantFeedCoordinator: PlantFeedViewControllerDelegate {
     func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem item: Plant) {
-        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: item)
-        plantDetailCoordinator.stop = { [weak self] in
-            self?.plantDetailCoordinator = nil
-        }
-        plantDetailCoordinator.start()
-        self.plantDetailCoordinator = plantDetailCoordinator
+//        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: item, CoreDataStack)
+//        plantDetailCoordinator.stop = { [weak self] in
+//            self?.plantDetailCoordinator = nil
+//        }
+//        plantDetailCoordinator.start()
+//        self.plantDetailCoordinator = plantDetailCoordinator
     }
 }
 

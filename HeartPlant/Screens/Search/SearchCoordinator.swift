@@ -41,7 +41,7 @@ class SearchCoordinator: Coordinator {
 
 extension SearchCoordinator: SearchViewControllerDelegate {
     func searchViewController(_ searchViewController: SearchViewController, didSelectItem item: Plant) {
-        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: item)
+        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: item, coreDataStack: coreDataStack)
         plantDetailCoordinator.stop = { [weak self] in
             self?.plantDetailCoordinator = nil
         }
