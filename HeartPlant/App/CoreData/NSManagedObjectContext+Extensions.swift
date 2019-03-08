@@ -22,7 +22,7 @@ extension NSManagedObjectContext {
                 object.setValue(plant.isFavourited, forKey: "isFavourited")
                 
                 try self.save()
-                
+                NotificationCenter.default.post(name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
                 return true
             }
         } catch let error as NSError {

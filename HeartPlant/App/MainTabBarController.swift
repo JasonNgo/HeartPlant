@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController {
     // MARK: - Initializers
     init() {
         self.coreDataStack = CoreDataStack(modelName: "HeartPlant")
-        self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController())
+        self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController(), coreDataStack: coreDataStack)
         self.searchCoordinator = SearchCoordinator(navigationController: UINavigationController(), coreDataStack: coreDataStack)
         self.profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
         super.init(nibName: nil, bundle: nil)

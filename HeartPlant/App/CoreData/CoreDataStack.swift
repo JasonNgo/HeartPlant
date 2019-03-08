@@ -81,6 +81,19 @@ class CoreDataStack {
         }
     }
     
+    func fetchFavouritedPlantEntities() -> [Plant] {
+        let favouritesFetch: NSFetchRequest<Plant> = NSFetchRequest(entityName: "Plant")
+        favouritesFetch.predicate = NSPredicate(format: "isFavourited == %@", NSNumber(booleanLiteral: true))
+        
+        do {
+            let results = try managedContext.fetch(favouritesFetch)
+            return results
+        } catch let error as NSError {
+            print("Unresolved error: \(error), \(error.userInfo)")
+            return []
+        }
+    }
+    
     func saveContext() {
         guard managedContext.hasChanges else { return }
         

@@ -30,6 +30,8 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     // MARK: - Model
     private let dataSource: PlantFeedDataSource
     
+    static let updateFavouritesNotificationName = NSNotification.Name(rawValue: "updateFavourites")
+    
     // MARK: - Delegate
     weak var delegate: PlantFeedViewControllerDelegate?
     
@@ -51,6 +53,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         
         setupControllerStyling()
         setupCollectionView()
+        setupObservers()
     }
     
     // MARK: - Setup
@@ -67,9 +70,11 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         collectionView.register(PlantFeedCell.self, forCellWithReuseIdentifier: dataSource.reuseId)
     }
     
-    // MARK: - Selectors
-    @objc private func handleAddButtonPressed() {
-        dataSource.addPlant()
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFavourites), name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
+    }
+    
+    @objc func handleUpdateFavourites() {
         collectionView.reloadData()
     }
     

@@ -11,12 +11,15 @@ import UIKit
 class PlantFeedDataSource: NSObject {
     
     private var plants: [Plant] = []
+    private let coreDataStack: CoreDataStack
     
     var reuseId: String {
         return "PlantFeedCell"
     }
     
-    override init() {
+    init(coreDataStack: CoreDataStack) {
+        self.coreDataStack = coreDataStack
+        self.plants = coreDataStack.fetchFavouritedPlantEntities()
         super.init()
     }
     
@@ -28,9 +31,7 @@ class PlantFeedDataSource: NSObject {
         return plants[index]
     }
     
-    func addPlant() {
 
-    }
 }
 
 extension PlantFeedDataSource: UICollectionViewDataSource {
