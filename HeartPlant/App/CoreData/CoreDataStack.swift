@@ -113,15 +113,15 @@ class CoreDataStack {
             guard let favourites = results.finalResult else {
                 return
             }
-            
+
             completion(favourites)
         }
-        
+
         do {
             guard let asyncFetchRequest = asyncFetchRequest else {
                 return
             }
-            
+
             try managedContext.execute(asyncFetchRequest)
         } catch let error as NSError {
             print("Unresolved error: \(error), \(error.userInfo)")
@@ -135,6 +135,7 @@ class CoreDataStack {
         
         do {
             try managedContext.save()
+            print("mangaedContext successfully updated")
         } catch let error as NSError {
             print("Unresolved error: \(error), \(error.userInfo)")
             throw error

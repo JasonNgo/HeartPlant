@@ -10,6 +10,7 @@ import UIKit
 
 protocol PlantFeedViewControllerDelegate: AnyObject {
     func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem item: Plant)
+    func plantFeedViewControllerDidPressSearch()
 }
 
 class PlantFeedViewController: UIViewController, Deinitcallable {
@@ -49,14 +50,14 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     }
     
     // MARK: - View Life Cycle
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         dataSource.fetchItems { [unowned self] error in
             if let _ = error {
                 return
             }
-
+            
             self.collectionView.reloadData()
         }
     }
@@ -66,6 +67,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         
         setupControllerStyling()
         setupCollectionView()
+        setupNavigationBar()
         setupGestureRecognizers()
         setupObservers()
         
@@ -90,6 +92,11 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         collectionView.register(PlantFeedCell.self, forCellWithReuseIdentifier: dataSource.reuseId)
     }
     
+    private func setupNavigationBar() {
+        let searchBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-search_filled").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSearchPressed))
+        navigationItem.rightBarButtonItem = searchBarButton
+    }
+    
     private func setupGestureRecognizers() {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
         collectionView.addGestureRecognizer(longPressGesture)
@@ -97,6 +104,11 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     
     private func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFavourites), name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
+    }
+    
+    // MARK: - Navigation Bar Selectors
+    @objc private func handleSearchPressed() {
+        delegate?.plantFeedViewControllerDidPressSearch()
     }
     
     // MARK: - Gesture Selectors

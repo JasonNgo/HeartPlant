@@ -31,6 +31,7 @@ class SearchCoordinator: Coordinator {
         searchViewController.tabBarItem.image = #imageLiteral(resourceName: "icons8-search_filled")
         setDeallocallable(with: searchViewController)
         navigationController.pushViewController(searchViewController, animated: false)
+        navigationController.navigationBar.prefersLargeTitles = false
         self.searchViewController = searchViewController
     }
     

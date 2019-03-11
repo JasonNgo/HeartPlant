@@ -67,6 +67,9 @@ class SearchViewController: UIViewController, Deinitcallable {
         setupCollectionView()
         setupSearchController()
         
+        let dismissButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(handleDonePressed))
+        navigationItem.rightBarButtonItem = dismissButton
+        
         // TODO: Start spinner
         dataSource.fetchItems { [unowned self] (error) in
             if let error = error {
@@ -75,6 +78,10 @@ class SearchViewController: UIViewController, Deinitcallable {
             
             self.collectionView.reloadData()
         }
+    }
+    
+    @objc func handleDonePressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Setup

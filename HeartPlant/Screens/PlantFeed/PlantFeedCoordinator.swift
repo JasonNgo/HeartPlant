@@ -16,6 +16,7 @@ class PlantFeedCoordinator: Coordinator {
     private var plantFeedViewController: PlantFeedViewController?
     // MARK: - Child Coordinators
     private var plantDetailCoordinator: PlantDetailCoordinator?
+    private var searchCoordinator: SearchCoordinator?
     
     // MARK: - Initializer
     init(navigationController: UINavigationController, coreDataStack: CoreDataStack) {
@@ -49,6 +50,17 @@ class PlantFeedCoordinator: Coordinator {
 }
 
 extension PlantFeedCoordinator: PlantFeedViewControllerDelegate {
+    func plantFeedViewControllerDidPressSearch() {
+        let searchNavController = UINavigationController()
+        let searchCoordinator = SearchCoordinator(navigationController: searchNavController, coreDataStack: coreDataStack)
+        searchCoordinator.stop = { [weak self] in
+            self?.searchCoordinator = nil
+        }
+        searchCoordinator.start()
+        self.navigationController.present(searchNavController, animated: true)
+        self.searchCoordinator = searchCoordinator
+    }
+    
     func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem item: Plant) {
 //        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: item, CoreDataStack)
 //        plantDetailCoordinator.stop = { [weak self] in
