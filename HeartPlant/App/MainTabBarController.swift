@@ -58,7 +58,7 @@ class MainTabBarController: UITabBarController {
     
     // MARK: - Core Data
     func shouldSaveContext() {
-        coreDataStack.saveContext()
+        try? coreDataStack.saveContext()
     }
     
     // MARK: - Required

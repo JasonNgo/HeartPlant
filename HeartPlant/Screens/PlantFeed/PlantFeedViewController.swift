@@ -52,8 +52,13 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        dataSource.fetchItems()
-        collectionView.reloadData()
+        dataSource.fetchItems { [unowned self] error in
+            if let _ = error {
+                return
+            }
+
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -63,6 +68,12 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         setupCollectionView()
         setupGestureRecognizers()
         setupObservers()
+        
+        // TODO: Start activity spinner
+        dataSource.fetchItems { [unowned self] error in
+            // TODO: End activity spinner
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: - Setup
@@ -105,6 +116,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
                 try self.dataSource.remove(at: selectedIndexPath.item)
                 self.collectionView.deleteItems(at: [selectedIndexPath])
             } catch let error as NSError {
+                // TODO: Show error message
                 print("There was an error attempting to delete: \(error)")
             }
         }
@@ -117,8 +129,13 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     
     // MARK: - Notification Selectors
     @objc private func handleUpdateFavourites() {
-        dataSource.fetchItems()
-        collectionView.reloadData()
+        dataSource.fetchItems { [unowned self] error in
+            if let _ = error {
+                return
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: - Required

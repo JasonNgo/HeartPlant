@@ -9,7 +9,6 @@
 import UIKit
 
 class PlantFeedDataSource: NSObject {
-    
     private var plants: [Plant] = []
     private let coreDataStack: CoreDataStack
     
@@ -24,11 +23,17 @@ class PlantFeedDataSource: NSObject {
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
         super.init()
-        fetchItems()
     }
     
-    func fetchItems() {
-        self.plants = coreDataStack.fetchFavouritedPlantEntities()
+    func fetchItems(completion: @escaping (Error?) -> Void) {
+        do {
+            try coreDataStack.fetchFavouritedPlantEntities { [unowned self] plants in
+                self.plants = plants
+                completion(nil)
+            }
+        } catch let error as NSError {
+            completion(error)
+        }
     }
     
     func item(at index: Int) -> Plant? {
@@ -39,6 +44,7 @@ class PlantFeedDataSource: NSObject {
         return plants[index]
     }
     
+    // TODO: Remove throws
     func remove(at index: Int) throws {
         guard !isEmpty else {
             fatalError("Trying to remove from an empty feed")

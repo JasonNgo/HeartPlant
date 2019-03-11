@@ -9,7 +9,6 @@
 import UIKit
 
 class SearchDataSource: NSObject {
-    
     private var results: [Plant] = []
     private let coreDataStack: CoreDataStack
 
@@ -19,7 +18,6 @@ class SearchDataSource: NSObject {
     
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
-        self.results = coreDataStack.fetchPlantEntries()
         super.init()
     }
     
@@ -31,13 +29,31 @@ class SearchDataSource: NSObject {
         return results[index]
     }
     
-    func filterResults(with searchText: String) {
-        guard !searchText.isEmpty else {
-            results = coreDataStack.fetchPlantEntries()
+    func fetchItems(completion: @escaping (Error?) -> Void) {
+        do {
+            try coreDataStack.fetchPlantEntities(completion: { [unowned self] (plants) in
+                self.results = plants
+                completion(nil)
+            })
+        } catch let error {
+            completion(error)
+        }
+    }
+    
+    func filterResults(with searchText: String, completion: @escaping (Error?) -> Void) {
+        if searchText.isEmpty {
+            fetchItems(completion: completion)
             return
         }
         
-        results = coreDataStack.fetchPlantEntries(with: searchText)
+        do {
+            try coreDataStack.fetchPlantEntities(with: searchText) { [unowned self] (plants) in
+                self.results = plants
+                completion(nil)
+            }
+        } catch let error {
+            completion(error)
+        }
     }
 }
 

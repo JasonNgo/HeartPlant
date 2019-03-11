@@ -90,6 +90,7 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
             plant.isFavourited = updatedIsFavourited
             navigationItem.rightBarButtonItem?.title = updatedIsFavourited ? "Favourited" : "Favourite"
         } catch let error as NSError {
+            // TODO: Show error message
             print("Error when pressing favourite button: \(error)")
         }
     }

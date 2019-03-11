@@ -66,6 +66,15 @@ class SearchViewController: UIViewController, Deinitcallable {
         setupControllerStyling()
         setupCollectionView()
         setupSearchController()
+        
+        // TODO: Start spinner
+        dataSource.fetchItems { [unowned self] (error) in
+            if let error = error {
+                return
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: - Setup
@@ -129,7 +138,13 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     private func filterCollectionResults(with searchText: String) {
-        dataSource.filterResults(with: searchText)
-        collectionView.reloadData()
+        dataSource.filterResults(with: searchText) { [unowned self] error in
+            if let error = error {
+                // TODO: Show error message
+                return
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
 }

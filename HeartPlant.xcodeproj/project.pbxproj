@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71DD8E021662B90677933E1D /* Pods_HeartPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDA0BCCBE4C0E9F7D372720 /* Pods_HeartPlant.framework */; };
 		7D3FFFA0222F332C0067A870 /* PlantDetailTopSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3FFF9E222F332C0067A870 /* PlantDetailTopSectionCell.swift */; };
 		7D3FFFA1222F332C0067A870 /* PlantDetailTopSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3FFF9F222F332C0067A870 /* PlantDetailTopSectionCell.xib */; };
 		7D3FFFA4222F38CB0067A870 /* PlantDetailWateringInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3FFFA2222F38CB0067A870 /* PlantDetailWateringInfoCell.swift */; };
@@ -43,6 +44,8 @@
 		7DBC1F76221F054C0058B11D /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBC1F75221F054C0058B11D /* ColorManager.swift */; };
 		7DBC1F77221F11730058B11D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D765E47221E0111005BDB30 /* Assets.xcassets */; };
 		7DBC1F79221F2A320058B11D /* PlantFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC1F78221F2A320058B11D /* PlantFeedCell.xib */; };
+		7DF72F522236B2CE0035BEAC /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF72F512236B2CE0035BEAC /* Result.swift */; };
+		9AC37ACE568D03BB66045975 /* Pods_HeartPlantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A02EA70DEB20416C94E223F /* Pods_HeartPlantTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		028BF99CAF046B2F179DCB9F /* Pods-HeartPlantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartPlantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartPlantTests/Pods-HeartPlantTests.release.xcconfig"; sourceTree = "<group>"; };
+		382DA4D4D9791A8530EF71BC /* Pods-HeartPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartPlant.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartPlant/Pods-HeartPlant.release.xcconfig"; sourceTree = "<group>"; };
+		5A02EA70DEB20416C94E223F /* Pods_HeartPlantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartPlantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78727553C0F97F1E7CCE69DE /* Pods-HeartPlantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartPlantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartPlantTests/Pods-HeartPlantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7D3FFF9E222F332C0067A870 /* PlantDetailTopSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailTopSectionCell.swift; sourceTree = "<group>"; };
 		7D3FFF9F222F332C0067A870 /* PlantDetailTopSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDetailTopSectionCell.xib; sourceTree = "<group>"; };
 		7D3FFFA2222F38CB0067A870 /* PlantDetailWateringInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailWateringInfoCell.swift; sourceTree = "<group>"; };
@@ -96,6 +103,9 @@
 		7DBC1F73221EFC450058B11D /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		7DBC1F75221F054C0058B11D /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		7DBC1F78221F2A320058B11D /* PlantFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantFeedCell.xib; sourceTree = "<group>"; };
+		7DF72F512236B2CE0035BEAC /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		86B929A766A1314AA400462E /* Pods-HeartPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartPlant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartPlant/Pods-HeartPlant.debug.xcconfig"; sourceTree = "<group>"; };
+		CBDA0BCCBE4C0E9F7D372720 /* Pods_HeartPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71DD8E021662B90677933E1D /* Pods_HeartPlant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,12 +121,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AC37ACE568D03BB66045975 /* Pods_HeartPlantTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01648BC4E63FC035C9B00623 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBDA0BCCBE4C0E9F7D372720 /* Pods_HeartPlant.framework */,
+				5A02EA70DEB20416C94E223F /* Pods_HeartPlantTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7D3FFF9D222EEC440067A870 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +164,8 @@
 				7D765E3F221E010F005BDB30 /* HeartPlant */,
 				7D765E54221E0111005BDB30 /* HeartPlantTests */,
 				7D765E3E221E010F005BDB30 /* Products */,
+				FBB217219EE99C4DC2153E61 /* Pods */,
+				01648BC4E63FC035C9B00623 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +205,7 @@
 				7D765E66221E085B005BDB30 /* Coordinator.swift */,
 				7D765E67221E085B005BDB30 /* UIColor+Extensions.swift */,
 				7D765E65221E085B005BDB30 /* UIView+Extensions.swift */,
+				7DF72F512236B2CE0035BEAC /* Result.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -274,6 +298,17 @@
 			path = PlantDetail;
 			sourceTree = "<group>";
 		};
+		FBB217219EE99C4DC2153E61 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86B929A766A1314AA400462E /* Pods-HeartPlant.debug.xcconfig */,
+				382DA4D4D9791A8530EF71BC /* Pods-HeartPlant.release.xcconfig */,
+				78727553C0F97F1E7CCE69DE /* Pods-HeartPlantTests.debug.xcconfig */,
+				028BF99CAF046B2F179DCB9F /* Pods-HeartPlantTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -281,9 +316,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D765E5A221E0111005BDB30 /* Build configuration list for PBXNativeTarget "HeartPlant" */;
 			buildPhases = (
+				129469DC9A4D4D715DC3C9EA /* [CP] Check Pods Manifest.lock */,
 				7D765E39221E010F005BDB30 /* Sources */,
 				7D765E3A221E010F005BDB30 /* Frameworks */,
 				7D765E3B221E010F005BDB30 /* Resources */,
+				69FFA9D46F24865EB7E5DEBF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,6 +335,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D765E5D221E0111005BDB30 /* Build configuration list for PBXNativeTarget "HeartPlantTests" */;
 			buildPhases = (
+				9ADED6922276175564958179 /* [CP] Check Pods Manifest.lock */,
 				7D765E4D221E0111005BDB30 /* Sources */,
 				7D765E4E221E0111005BDB30 /* Frameworks */,
 				7D765E4F221E0111005BDB30 /* Resources */,
@@ -374,6 +412,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		129469DC9A4D4D715DC3C9EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeartPlant-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69FFA9D46F24865EB7E5DEBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HeartPlant/Pods-HeartPlant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartPlant/Pods-HeartPlant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9ADED6922276175564958179 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeartPlantTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7D765E39221E010F005BDB30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -403,6 +510,7 @@
 				7D93FED32230227B00585EAB /* SearchDataSource.swift in Sources */,
 				7D93FEDB22302C3000585EAB /* Plant+CoreDataClass.swift in Sources */,
 				7D765E41221E010F005BDB30 /* AppDelegate.swift in Sources */,
+				7DF72F522236B2CE0035BEAC /* Result.swift in Sources */,
 				7D3FFFA0222F332C0067A870 /* PlantDetailTopSectionCell.swift in Sources */,
 				7D52E729221F41C000ED3F10 /* PlantDetailViewController.swift in Sources */,
 				7D3FFFA4222F38CB0067A870 /* PlantDetailWateringInfoCell.swift in Sources */,
@@ -558,6 +666,7 @@
 		};
 		7D765E5B221E0111005BDB30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86B929A766A1314AA400462E /* Pods-HeartPlant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -576,6 +685,7 @@
 		};
 		7D765E5C221E0111005BDB30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 382DA4D4D9791A8530EF71BC /* Pods-HeartPlant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -594,6 +704,7 @@
 		};
 		7D765E5E221E0111005BDB30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78727553C0F97F1E7CCE69DE /* Pods-HeartPlantTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -615,6 +726,7 @@
 		};
 		7D765E5F221E0111005BDB30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 028BF99CAF046B2F179DCB9F /* Pods-HeartPlantTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
