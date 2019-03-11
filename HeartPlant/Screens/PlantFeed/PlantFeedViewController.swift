@@ -30,12 +30,13 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     // MARK: - Model
     private let dataSource: PlantFeedDataSource
     
+    // MARK: - Notifications
     static let updateFavouritesNotificationName = NSNotification.Name(rawValue: "updateFavourites")
     
     // MARK: - Delegate
     weak var delegate: PlantFeedViewControllerDelegate?
     
-    // MARK: - Deinit
+    // MARK: - Deintcallable
     var onDeinit: (() -> Void)?
     deinit {
         onDeinit?()
@@ -50,6 +51,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     // MARK: - View Life Cycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         dataSource.fetchItems()
         collectionView.reloadData()
     }
@@ -86,6 +88,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFavourites), name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
     }
     
+    // MARK: - Gesture Selectors
     @objc private func handleLongPressGesture(gesture: UILongPressGestureRecognizer) {
         let location = gesture.location(in: collectionView)
         
@@ -112,6 +115,7 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         present(alertController, animated: true)
     }
     
+    // MARK: - Notification Selectors
     @objc private func handleUpdateFavourites() {
         dataSource.fetchItems()
         collectionView.reloadData()
@@ -125,16 +129,23 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
 
 // MARK: - UICollectionViewDelegate
 extension PlantFeedViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacingForSection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = dataSource.item(at: indexPath.item) else { return }
+        guard let item = dataSource.item(at: indexPath.item) else {
+            return
+        }
+        
         delegate?.plantFeedViewController(self, didSelectItem: item)
     }
 }

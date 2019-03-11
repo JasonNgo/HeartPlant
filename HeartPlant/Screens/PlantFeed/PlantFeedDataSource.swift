@@ -44,17 +44,20 @@ class PlantFeedDataSource: NSObject {
             fatalError("Trying to remove from an empty feed")
         }
         
-        guard let plant = item(at: index) else { return }
+        guard let plant = item(at: index) else {
+            return
+        }
+        
         do {
             try coreDataStack.managedContext.removePlantFromFavourited(plant: plant)
             plants.remove(at: index)
         } catch let error as NSError {
             throw error
         }
-
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension PlantFeedDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return plants.count

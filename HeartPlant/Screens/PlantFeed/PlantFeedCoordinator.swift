@@ -10,13 +10,14 @@ import UIKit
 
 class PlantFeedCoordinator: Coordinator {
     let navigationController: UINavigationController
-    // Dependencies
+    // MARK: - Dependencies
     private let coreDataStack: CoreDataStack
-    // Root View Controller
+    // MARK: - Root View Controller
     private var plantFeedViewController: PlantFeedViewController?
-    // Child Coordinators
+    // MARK: - Child Coordinators
     private var plantDetailCoordinator: PlantDetailCoordinator?
     
+    // MARK: - Initializer
     init(navigationController: UINavigationController, coreDataStack: CoreDataStack) {
         self.navigationController = navigationController
         self.coreDataStack = coreDataStack
@@ -36,6 +37,7 @@ class PlantFeedCoordinator: Coordinator {
         self.plantFeedViewController = plantFeedViewController
     }
     
+    // MARK: - Setup
     private func setupNavigationControllerStyling() {
         let titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: ColorManager.shared.primaryColor
@@ -44,7 +46,6 @@ class PlantFeedCoordinator: Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.largeTitleTextAttributes = titleTextAttributes
     }
-    
 }
 
 extension PlantFeedCoordinator: PlantFeedViewControllerDelegate {

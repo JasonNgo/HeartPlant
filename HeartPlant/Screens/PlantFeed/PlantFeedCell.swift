@@ -11,7 +11,6 @@ import UIKit
 class PlantFeedCell: UICollectionViewCell {
     
     // MARK: - Subviews
-    
     private let thumbnailImageView: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true
@@ -58,14 +57,12 @@ class PlantFeedCell: UICollectionViewCell {
     }()
     
     // MARK: - Initializers
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubViews()
     }
     
     // MARK: - Setup
-    
     private func setupSubViews() {
         contentView.addSubview(thumbnailImageView)
         thumbnailImageView.anchor(
@@ -100,14 +97,12 @@ class PlantFeedCell: UICollectionViewCell {
     }
     
     // MARK: - Configuration
-    
     func configureCell(using viewModel: PlantFeedCellViewModel) {
         nameLabel.text = viewModel.nameText
         scientificNameLabel.text = viewModel.scientificNameText
     }
     
     // MARK: - Required
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
