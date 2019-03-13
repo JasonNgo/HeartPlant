@@ -12,7 +12,6 @@ class MainTabBarController: UITabBarController {
     
     // MARK: - Tab Bar Coordinators
     private let plantFeedCoordinator: PlantFeedCoordinator
-    private let searchCoordinator: SearchCoordinator
     private let profileCoordinator: ProfileCoordinator
     
     // MARK: - Data Source
@@ -21,8 +20,7 @@ class MainTabBarController: UITabBarController {
     // MARK: - Initializers
     init() {
         self.coreDataStack = CoreDataStack(modelName: "HeartPlant")
-        self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController())
-        self.searchCoordinator = SearchCoordinator(navigationController: UINavigationController(), coreDataStack: coreDataStack)
+        self.plantFeedCoordinator = PlantFeedCoordinator(navigationController: UINavigationController(), coreDataStack: coreDataStack)
         self.profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,21 +42,19 @@ class MainTabBarController: UITabBarController {
     
     private func setupCoordinators() {
         plantFeedCoordinator.start()
-        searchCoordinator.start()
         profileCoordinator.start()
     }
     
     private func setupTabBarViewControllers() {
         viewControllers = [
             plantFeedCoordinator.navigationController,
-            searchCoordinator.navigationController,
             profileCoordinator.navigationController
         ]
     }
     
     // MARK: - Core Data
     func shouldSaveContext() {
-        coreDataStack.saveContext()
+        try? coreDataStack.saveContext()
     }
     
     // MARK: - Required

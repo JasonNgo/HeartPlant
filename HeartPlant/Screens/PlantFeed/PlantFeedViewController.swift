@@ -9,7 +9,8 @@
 import UIKit
 
 protocol PlantFeedViewControllerDelegate: AnyObject {
-    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem selected: Plant)
+    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem item: Plant)
+    func plantFeedViewControllerDidPressSearch()
 }
 
 class PlantFeedViewController: UIViewController, Deinitcallable {
@@ -30,28 +31,51 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
     // MARK: - Model
     private let dataSource: PlantFeedDataSource
     
+    // MARK: - Notifications
+    static let updateFavouritesNotificationName = NSNotification.Name(rawValue: "updateFavourites")
+    
     // MARK: - Delegate
     weak var delegate: PlantFeedViewControllerDelegate?
     
-    // MARK: - Init
+    // MARK: - Deintcallable
     var onDeinit: (() -> Void)?
-    
     deinit {
         onDeinit?()
     }
     
+    // MARK: - Init
     init(dataSource: PlantFeedDataSource) {
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
     }
     
     // MARK: - View Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dataSource.fetchItems { [unowned self] error in
+            if let _ = error {
+                return
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupControllerStyling()
         setupCollectionView()
-        setupRightBarButton()
+        setupNavigationBar()
+        setupGestureRecognizers()
+        setupObservers()
+        
+        // TODO: Start activity spinner
+        dataSource.fetchItems { [unowned self] error in
+            // TODO: End activity spinner
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: - Setup
@@ -68,15 +92,62 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
         collectionView.register(PlantFeedCell.self, forCellWithReuseIdentifier: dataSource.reuseId)
     }
     
-    private func setupRightBarButton() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddButtonPressed))
-        navigationItem.rightBarButtonItem = addButton
+    private func setupNavigationBar() {
+        let searchBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-search_filled").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSearchPressed))
+        navigationItem.rightBarButtonItem = searchBarButton
     }
     
-    // MARK: - Selectors
-    @objc private func handleAddButtonPressed() {
-        dataSource.addPlant()
-        collectionView.reloadData()
+    private func setupGestureRecognizers() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFavourites), name: PlantFeedViewController.updateFavouritesNotificationName, object: nil)
+    }
+    
+    // MARK: - Navigation Bar Selectors
+    @objc private func handleSearchPressed() {
+        delegate?.plantFeedViewControllerDidPressSearch()
+    }
+    
+    // MARK: - Gesture Selectors
+    @objc private func handleLongPressGesture(gesture: UILongPressGestureRecognizer) {
+        let location = gesture.location(in: collectionView)
+        
+        guard let selectedIndexPath = collectionView.indexPathForItem(at: location) else {
+            return
+        }
+        
+        let alertController = UIAlertController(title: "Delete Plant",
+                                                message: "Are you sure you'd like to delete this plant?",
+                                                preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [unowned self] (action) in
+            do {
+                try self.dataSource.remove(at: selectedIndexPath.item)
+                self.collectionView.deleteItems(at: [selectedIndexPath])
+            } catch let error as NSError {
+                // TODO: Show error message
+                print("There was an error attempting to delete: \(error)")
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    // MARK: - Notification Selectors
+    @objc private func handleUpdateFavourites() {
+        dataSource.fetchItems { [unowned self] error in
+            if let _ = error {
+                return
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: - Required
@@ -87,16 +158,23 @@ class PlantFeedViewController: UIViewController, Deinitcallable {
 
 // MARK: - UICollectionViewDelegate
 extension PlantFeedViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacingForSection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedItem = dataSource.item(at: indexPath.item) else { return }
-        delegate?.plantFeedViewController(self, didSelectItem: selectedItem)
+        guard let item = dataSource.item(at: indexPath.item) else {
+            return
+        }
+        
+        delegate?.plantFeedViewController(self, didSelectItem: item)
     }
 }

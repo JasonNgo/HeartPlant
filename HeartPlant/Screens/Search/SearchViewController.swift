@@ -13,6 +13,10 @@ private enum SearchState {
     case inactive
 }
 
+protocol SearchViewControllerDelegate: AnyObject {
+    func searchViewController(_ searchViewController: SearchViewController, didSelectItem item: Plant)
+}
+
 class SearchViewController: UIViewController, Deinitcallable {
     
     // MARK: - Views
@@ -40,6 +44,9 @@ class SearchViewController: UIViewController, Deinitcallable {
     // MARK: - Model
     private let dataSource: SearchDataSource
     
+    // MARK: - Delegate
+    weak var delegate: SearchViewControllerDelegate?
+    
     // MARK: - Deinit
     var onDeinit: (() -> Void)?
     deinit {
@@ -59,6 +66,17 @@ class SearchViewController: UIViewController, Deinitcallable {
         setupControllerStyling()
         setupCollectionView()
         setupSearchController()
+        setupNavigationBar()
+        
+        // TODO: Start Spinner
+        dataSource.fetchItems { [unowned self] (error) in
+            if let error = error {
+                return
+            }
+            // TODO: End Spinner
+            
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: - Setup
@@ -82,12 +100,23 @@ class SearchViewController: UIViewController, Deinitcallable {
         searchController.searchBar.delegate = self
     }
     
+    private func setupNavigationBar() {
+        let dismissButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(handleDonePressed))
+        navigationItem.rightBarButtonItem = dismissButton
+    }
+    
+    // MARK: - Navigation Bar Selectors
+    @objc private func handleDonePressed() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Required
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
@@ -96,8 +125,38 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacingForSection
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.item(at: indexPath.item) else { return }
+        delegate?.searchViewController(self, didSelectItem: item)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchState = .active
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchState = .inactive
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterCollectionResults(with: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filterCollectionResults(with: "")
+    }
+    
+    private func filterCollectionResults(with searchText: String) {
+        dataSource.filterResults(with: searchText) { [unowned self] error in
+            if let error = error {
+                // TODO: Show error message
+                return
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
 }

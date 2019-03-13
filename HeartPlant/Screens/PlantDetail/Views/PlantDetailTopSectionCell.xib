@@ -71,7 +71,7 @@
                 <outlet property="wateringRuleLabel" destination="6oR-VQ-fEv" id="viZ-ER-PuH"/>
                 <outlet property="wateringTitleLabel" destination="69Q-J9-0qO" id="Iep-Nk-eAm"/>
             </connections>
-            <point key="canvasLocation" x="280.80000000000001" y="247.37631184407797"/>
+            <point key="canvasLocation" x="135" y="255"/>
         </tableViewCell>
     </objects>
     <resources>

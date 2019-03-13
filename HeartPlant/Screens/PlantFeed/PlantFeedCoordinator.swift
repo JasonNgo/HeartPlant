@@ -9,21 +9,26 @@
 import UIKit
 
 class PlantFeedCoordinator: Coordinator {
-    
     let navigationController: UINavigationController
+    // MARK: - Dependencies
+    private let coreDataStack: CoreDataStack
+    // MARK: - Root View Controller
     private var plantFeedViewController: PlantFeedViewController?
-    
+    // MARK: - Child Coordinators
     private var plantDetailCoordinator: PlantDetailCoordinator?
+    private var searchCoordinator: SearchCoordinator?
     
-    init(navigationController: UINavigationController) {
+    // MARK: - Initializer
+    init(navigationController: UINavigationController, coreDataStack: CoreDataStack) {
         self.navigationController = navigationController
+        self.coreDataStack = coreDataStack
         super.init()
         
         setupNavigationControllerStyling()
     }
     
     override func start() {
-        let plantFeedDataSource = PlantFeedDataSource()
+        let plantFeedDataSource = PlantFeedDataSource(coreDataStack: coreDataStack)
         let plantFeedViewController = PlantFeedViewController(dataSource: plantFeedDataSource)
         plantFeedViewController.delegate = self
         plantFeedViewController.tabBarItem.title = "Plants"
@@ -33,6 +38,7 @@ class PlantFeedCoordinator: Coordinator {
         self.plantFeedViewController = plantFeedViewController
     }
     
+    // MARK: - Setup
     private func setupNavigationControllerStyling() {
         let titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: ColorManager.shared.primaryColor
@@ -41,17 +47,27 @@ class PlantFeedCoordinator: Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.largeTitleTextAttributes = titleTextAttributes
     }
-    
 }
 
 extension PlantFeedCoordinator: PlantFeedViewControllerDelegate {
-    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem selected: Plant) {
-        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: selected)
-        plantDetailCoordinator.stop = { [weak self] in
-            self?.plantDetailCoordinator = nil
+    func plantFeedViewControllerDidPressSearch() {
+        let searchNavController = UINavigationController()
+        let searchCoordinator = SearchCoordinator(navigationController: searchNavController, coreDataStack: coreDataStack)
+        searchCoordinator.stop = { [weak self] in
+            self?.searchCoordinator = nil
         }
-        plantDetailCoordinator.start()
-        self.plantDetailCoordinator = plantDetailCoordinator
+        searchCoordinator.start()
+        self.navigationController.present(searchNavController, animated: true)
+        self.searchCoordinator = searchCoordinator
+    }
+    
+    func plantFeedViewController(_ plantFeedController: PlantFeedViewController, didSelectItem item: Plant) {
+//        let plantDetailCoordinator = PlantDetailCoordinator(navigationController: navigationController, plant: item, CoreDataStack)
+//        plantDetailCoordinator.stop = { [weak self] in
+//            self?.plantDetailCoordinator = nil
+//        }
+//        plantDetailCoordinator.start()
+//        self.plantDetailCoordinator = plantDetailCoordinator
     }
 }
 

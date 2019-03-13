@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import CoreData
 
 class SearchDataSource: NSObject {
-    
     private var results: [Plant] = []
     private let coreDataStack: CoreDataStack
-    
+
     var reuseId: String {
         return "SearchCell"
     }
@@ -21,10 +19,6 @@ class SearchDataSource: NSObject {
     init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
         super.init()
-        
-        let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
-        let results = try! coreDataStack.managedContext.fetch(resultsFetch)
-        self.results = results
     }
     
     func item(at index: Int) -> Plant? {
@@ -33,6 +27,33 @@ class SearchDataSource: NSObject {
         }
         
         return results[index]
+    }
+    
+    func fetchItems(completion: @escaping (Error?) -> Void) {
+        do {
+            try coreDataStack.fetchPlantEntities(completion: { [unowned self] (plants) in
+                self.results = plants
+                completion(nil)
+            })
+        } catch let error {
+            completion(error)
+        }
+    }
+    
+    func filterResults(with searchText: String, completion: @escaping (Error?) -> Void) {
+        if searchText.isEmpty {
+            fetchItems(completion: completion)
+            return
+        }
+        
+        do {
+            try coreDataStack.fetchPlantEntities(with: searchText) { [unowned self] (plants) in
+                self.results = plants
+                completion(nil)
+            }
+        } catch let error {
+            completion(error)
+        }
     }
 }
 
@@ -53,5 +74,4 @@ extension SearchDataSource: UICollectionViewDataSource {
         return cell
     }
 }
-
 

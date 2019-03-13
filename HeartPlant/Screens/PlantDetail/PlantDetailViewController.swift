@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlantDetailViewController: UIViewController, Deinitcallable {
     
@@ -22,6 +23,7 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     
     // MARK: - Model
     private let plant: Plant
+    private let coreDataStack: CoreDataStack
     
     // MARK: - Deinit
     var onDeinit: (() -> Void)?
@@ -30,8 +32,9 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     }
     
     // MARK: - Initializers
-    init(plant: Plant) {
+    init(plant: Plant, coreDataStack: CoreDataStack) {
         self.plant = plant
+        self.coreDataStack = coreDataStack
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,6 +43,7 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
         super.viewDidLoad()
         setupViewController()
         setupTableView()
+        setupFavouriteButton()
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -52,8 +56,8 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
     // MARK: - Setup
     private func setupViewController() {
         view.backgroundColor = .white
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
     }
     
     private func setupTableView() {
@@ -71,6 +75,24 @@ class PlantDetailViewController: UIViewController, Deinitcallable {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+    }
+    
+    private func setupFavouriteButton() {
+        let title = plant.isFavourited ? "Favourited" : "Favourite"
+        let favouriteButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(handleFavouritePressed))
+        navigationItem.rightBarButtonItem = favouriteButton
+    }
+    
+    @objc func handleFavouritePressed() {
+        do {
+            let updatedIsFavourited = !plant.isFavourited
+            try coreDataStack.managedContext.updatePlantFavourited(to: updatedIsFavourited, for: plant)
+            plant.isFavourited = updatedIsFavourited
+            navigationItem.rightBarButtonItem?.title = updatedIsFavourited ? "Favourited" : "Favourite"
+        } catch let error as NSError {
+            // TODO: Show error message
+            print("Error when pressing favourite button: \(error)")
+        }
     }
     
     // MARK: - Required

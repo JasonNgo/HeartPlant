@@ -28,13 +28,22 @@ class CoreDataStack {
         return container
     }()
     
+    // MARK: - Async Calls
+    private var asyncFetchRequest: NSAsynchronousFetchRequest<Plant>?
+    
+    // MARK: - Init
     init(modelName: String) {
         self.modelName = modelName
-        setupPlantData()
+        
+        do {
+            try setupPlantData()
+        } catch {
+            fatalError("Unable to setup plant database")
+        }
     }
     
     // MARK: - Setup
-    func setupPlantData() {
+    func setupPlantData() throws {
         let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
         let count = try! managedContext.count(for: resultsFetch)
         if count > 0 { return }
@@ -52,7 +61,85 @@ class CoreDataStack {
             plant.isFavourited = plantDict["isFavourited"] as! Bool
         }
         
-        saveContext()
+        do {
+            try saveContext()
+        } catch let error {
+            throw error
+        }
+    }
+    
+    // MARK: - Fetching
+    func fetchPlantEntities(with searchText: String? = nil, completion: @escaping ([Plant]) -> Void) throws {
+        let resultsFetch: NSFetchRequest<Plant> = Plant.fetchRequest()
+        
+        if searchText != nil {
+            let predicate = NSCompoundPredicate(
+                type: .or,
+                subpredicates: [
+                    NSPredicate(format: "name CONTAINS[c] '\(searchText!)'"),
+                    NSPredicate(format: "scientificName CONTAINS[c] '\(searchText!)'")
+                ]
+            )
+            resultsFetch.predicate = predicate
+        } else {
+            resultsFetch.predicate = nil
+        }
+        
+        asyncFetchRequest = NSAsynchronousFetchRequest<Plant>(fetchRequest: resultsFetch) { (results: NSAsynchronousFetchResult) in
+            guard let plants = results.finalResult else {
+                return
+            }
+            
+            completion(plants)
+        }
+        
+        do {
+            guard let asyncFetchRequest = asyncFetchRequest else {
+                return
+            }
+            
+            try managedContext.execute(asyncFetchRequest)
+        } catch let error as NSError {
+            print("Unresolved error: \(error), \(error.userInfo)")
+            throw error
+        }
+    }
+    
+    func fetchFavouritedPlantEntities(completion: @escaping ([Plant]) -> Void) throws {
+        let favouritesFetch: NSFetchRequest<Plant> = NSFetchRequest(entityName: "Plant")
+        favouritesFetch.predicate = NSPredicate(format: "isFavourited == %@", NSNumber(booleanLiteral: true))
+        
+        asyncFetchRequest = NSAsynchronousFetchRequest<Plant>(fetchRequest: favouritesFetch) { (results: NSAsynchronousFetchResult) in
+            guard let favourites = results.finalResult else {
+                return
+            }
+
+            completion(favourites)
+        }
+
+        do {
+            guard let asyncFetchRequest = asyncFetchRequest else {
+                return
+            }
+
+            try managedContext.execute(asyncFetchRequest)
+        } catch let error as NSError {
+            print("Unresolved error: \(error), \(error.userInfo)")
+            throw error
+        }
+    }
+    
+    // MARK: - Saving
+    func saveContext() throws {
+        guard managedContext.hasChanges else { return }
+        
+        do {
+            try managedContext.save()
+            print("mangaedContext successfully updated")
+        } catch let error as NSError {
+            print("Unresolved error: \(error), \(error.userInfo)")
+            throw error
+        }
     }
     
     func clearAllPlantEntries() {
@@ -64,15 +151,4 @@ class CoreDataStack {
             print("Unresolved error: \(error), \(error.userInfo)")
         }
     }
-    
-    func saveContext() {
-        guard managedContext.hasChanges else { return }
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Unresolved error: \(error), \(error.userInfo)")
-        }
-    }
-    
 }

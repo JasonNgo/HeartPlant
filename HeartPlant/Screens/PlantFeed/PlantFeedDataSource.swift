@@ -9,15 +9,31 @@
 import UIKit
 
 class PlantFeedDataSource: NSObject {
-    
     private var plants: [Plant] = []
+    private let coreDataStack: CoreDataStack
     
     var reuseId: String {
         return "PlantFeedCell"
     }
     
-    override init() {
+    var isEmpty: Bool {
+        return plants.isEmpty
+    }
+    
+    init(coreDataStack: CoreDataStack) {
+        self.coreDataStack = coreDataStack
         super.init()
+    }
+    
+    func fetchItems(completion: @escaping (Error?) -> Void) {
+        do {
+            try coreDataStack.fetchFavouritedPlantEntities { [unowned self] plants in
+                self.plants = plants
+                completion(nil)
+            }
+        } catch let error as NSError {
+            completion(error)
+        }
     }
     
     func item(at index: Int) -> Plant? {
@@ -28,11 +44,26 @@ class PlantFeedDataSource: NSObject {
         return plants[index]
     }
     
-    func addPlant() {
-
+    // TODO: Remove throws
+    func remove(at index: Int) throws {
+        guard !isEmpty else {
+            fatalError("Trying to remove from an empty feed")
+        }
+        
+        guard let plant = item(at: index) else {
+            return
+        }
+        
+        do {
+            try coreDataStack.managedContext.removePlantFromFavourited(plant: plant)
+            plants.remove(at: index)
+        } catch let error as NSError {
+            throw error
+        }
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension PlantFeedDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return plants.count
