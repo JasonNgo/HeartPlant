@@ -66,22 +66,17 @@ class SearchViewController: UIViewController, Deinitcallable {
         setupControllerStyling()
         setupCollectionView()
         setupSearchController()
+        setupNavigationBar()
         
-        let dismissButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(handleDonePressed))
-        navigationItem.rightBarButtonItem = dismissButton
-        
-        // TODO: Start spinner
+        // TODO: Start Spinner
         dataSource.fetchItems { [unowned self] (error) in
             if let error = error {
                 return
             }
+            // TODO: End Spinner
             
             self.collectionView.reloadData()
         }
-    }
-    
-    @objc func handleDonePressed() {
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Setup
@@ -103,6 +98,16 @@ class SearchViewController: UIViewController, Deinitcallable {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
+    }
+    
+    private func setupNavigationBar() {
+        let dismissButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(handleDonePressed))
+        navigationItem.rightBarButtonItem = dismissButton
+    }
+    
+    // MARK: - Navigation Bar Selectors
+    @objc private func handleDonePressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Required
